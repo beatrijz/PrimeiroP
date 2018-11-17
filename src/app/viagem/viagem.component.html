@@ -1,0 +1,50 @@
+<h1>IDENTIFICAÇÃO</h1>
+<h2>Empresa/Evento(*):</h2>
+<input type="text" pInputText [(ngModel)]="empresa" />
+
+<h2>Cidade/Local:</h2>
+<input type="text" pInputText [(ngModel)]="cidade"/>
+
+<h2>Roteiro:</h2>
+<input type="text" pInputText [(ngModel)]="roteiro"/>
+<h2>Data/Periodo</h2>
+<input type="text" pInputText [(ngModel)]="data"/>
+
+<h2>Horario</h2>
+<input type="text" pInputText [(ngModel)]="horario"/>
+<h2>Professor(es) Responsável (is)</h2>
+<input type="text" pInputText [(ngModel)]="professor"/>
+<h2>Componente(s) Curricular(es)</h2>
+<input type="text" pInputText [(ngModel)]="curriculo"/>
+<h2>Conteúdo Programático</h2>
+<input type="text" pInputText [(ngModel)]="conteudo"/>
+<h2>Carga Horaria</h2>
+<input type="text" pInputText [(ngModel)]="carga"/>
+<h2>Turma</h2>
+<input type="text" pInputText [(ngModel)]="turma"/>
+<h2>Hospedagem (se houver)</h2>
+<input type="text" pInputText [(ngModel)]="hospedagem"/>
+<h2>Endereço</h2>
+<input type="text" pInputText [(ngModel)]="endereco"/>
+<h2> Outros Servidores</h2>
+<input type="text" pInputText [(ngModel)]="servico"/>
+<br>
+<br>
+<h2>JUSTIFICATIVA(S)</h2>
+<input type="text" pInputText [(ngModel)]="justificativas"/>
+<br>
+<br>
+<h2>OBJETIVO(S)</h2>
+<input type="text" pInputText [(ngModel)]="objetivos"/>
+<br>
+<br>
+<h2>METODOLOGIA</h2>
+<input type="text" pInputText [(ngModel)]="metodologia"/>
+<br>
+<br>
+<h2>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</h2>
+<input type="text" pInputText [(ngModel)]="formasAprendizagem"/>
+<br>
+<router-outlet></router-outlet>
+<br>
+<button pButton type="button" label="Cadastrar" (click) = 'salvar()' ></button>

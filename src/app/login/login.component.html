@@ -1,0 +1,34 @@
+
+<html>
+
+<body>
+  
+  <p align=center><img src="marca.png"/> </p> <br>
+  <div class="ui-g">
+      <div class="ui-g-4"></div>
+      <div class="ui-inputgroup">
+    <input [(ngModel)]="usuario.nome" type="text" pInputText placeholder="Username">         
+</div>
+
+<div class="ui-inputgroup">  
+  
+    <input [(ngModel)]="usuario.senha"type="password" (click) = "fazerLogin()" pInputText placeholder="Senha"> 
+    <div class="ui-g-4"><button pButton type="button"class=".ui-button-info">Entrar</button>  </div>  
+     
+      </div>
+      
+<div class="ui-inputgroup">   
+    <div class="ui-g-4"><button pButton type="button"class=".ui-button-info">Cadastrar</button> </div>
+        
+      </div>
+
+ </div>
+  
+  
+ 
+            
+    
+  <br>
+
+</body>
+</html>
