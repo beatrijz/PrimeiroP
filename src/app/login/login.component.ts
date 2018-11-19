@@ -8,7 +8,9 @@ import { Usuario } from '../usuario/usuario';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario:Usuario;
+  usuario: Usuario= {nome:"Leonardo", siape:12345, senha:"trtrtrt"};
+  
+
 
 
 login (usuario){
