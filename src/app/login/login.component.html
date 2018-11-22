@@ -12,13 +12,14 @@
 
 <div class="ui-inputgroup">  
   
-    <input [(ngModel)]="usuario.senha"type="password" (click) = "fazerLogin()" pInputText placeholder="Senha"> 
-    <div class="ui-g-4"><button pButton type="button"class=".ui-button-info">Entrar</button>  </div>  
+    <input [(ngModel)]="usuario.senha"type="password"  pInputText placeholder="Senha"> 
+   
+    <div  class="ui-g-4"><p-button label="Entrar" styleClass=".ui-button-secondary" (click) = "fazerLogin()"></p-button></div>  
      
       </div>
       
 <div class="ui-inputgroup">   
-    <div class="ui-g-4"><button pButton type="button"class=".ui-button-info">Cadastrar</button> </div>
+    <div class="ui-g-4"><p-button label="Cadastro" styleClass=".ui-button-danger" ></p-button> </div>
         
       </div>
 

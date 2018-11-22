@@ -12,6 +12,7 @@ export class ListarUsuarioComponent implements OnInit {
 
  
   usuario:Usuario[];
+  
 
   constructor(private usuarioService:UsuarioService) {
 
@@ -24,6 +25,9 @@ export class ListarUsuarioComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+  deletar(usuario){
+    this.usuarioService.deletar(usuario)
   }
 
 }

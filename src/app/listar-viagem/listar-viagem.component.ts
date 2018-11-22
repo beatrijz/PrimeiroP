@@ -21,13 +21,11 @@ export class ListarViagemComponent implements OnInit {
     );
     }
     deletar(viagem){
-      this.viagemServico.deletar(viagem.id);
-    }
-    
-   
-      
+      this.viagemServico.deletar(viagem);
+    } 
 
   ngOnInit() {
   }
+  
 }
 

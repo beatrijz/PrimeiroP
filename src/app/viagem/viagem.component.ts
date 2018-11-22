@@ -9,12 +9,13 @@ import { viagem } from './viagem';
   styleUrls: ['./viagem.component.css']
 })
 export class ViagemComponent implements OnInit {
+  viagem:viagem;
 
   constructor(public router : Router,
     private viagemService: ViagemService) { 
-      let viagem: viagem = {empresa: "Biazinha",cidade: "Recife", roteiro: "Olinda", data: "17/11/18", horario: 12,
-    professor: "Leonardo", curricular: "Cultura", conteudo: "Legal", carga: 10, turma: "3 top" }
-      this.viagemService.salvar(viagem);
+       this.viagem={empresa: ' ',cidade: ' ', roteiro: ' ', data: " ", horario: 0,
+    professor: ' ', curricular: ' ', conteudo: ' ', carga: 0, turma: ' ' }
+      
   
 
 
@@ -22,5 +23,9 @@ export class ViagemComponent implements OnInit {
 
   ngOnInit() {
   }
+  salvar(){
+    this.viagemService.salvar(this.viagem);
+  }
+  }
 
-}
+

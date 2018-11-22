@@ -13,17 +13,20 @@ import { Usuario } from './usuario';
 })
 export class UsuarioComponent implements OnInit {
 
+    usuario:Usuario;
   constructor(
     public router : Router,
    private usuarioService: UsuarioService) {
-     let usuario: Usuario= {nome:"Leonardo", siape:12345, senha:"trtrtrt"};
-    
-     this.usuarioService.salvar(usuario);
+     this.usuario = {nome:'', senha:'', siape:0}
     
 
     }
 
   ngOnInit() {
+  }
+  salvar(){
+    this.usuarioService.salvar(this.usuario);
+    
   }
 
 }

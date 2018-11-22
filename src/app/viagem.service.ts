@@ -49,7 +49,7 @@ export class ViagemService {
  
 
   deletar(viagem): Promise<void> {
-    return this.viagemCollection.doc(viagem.id).delete();
+    return this.viagemCollection.doc(viagem).delete();
   }
   
   

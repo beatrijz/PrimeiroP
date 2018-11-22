@@ -11,7 +11,7 @@
       <tr>
           <td> <a [routerLink]="['/visita/visualizacaoViagem', viagem.id]">  {{ viagem.id }} </a> </td>
           <td> <a [routerLink]="['/visita/visualizacaoViagem', viagem.id]"> {{viagem.cidade}} </a> </td>
-          <td>  <p-button  (click)="deletar(viagem)">Deletar</p-button>  </td>
+          <td>  <p-button  (click)="deletar()">Deletar</p-button>  </td>
       </tr>
       
   </ng-template>
