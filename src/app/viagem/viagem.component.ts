@@ -9,12 +9,12 @@ import { viagem } from './viagem';
   styleUrls: ['./viagem.component.css']
 })
 export class ViagemComponent implements OnInit {
-  viagem:viagem;
 
-  constructor(public router : Router,
-    private viagemService: ViagemService) { 
+  viagem:viagem;
+  constructor(private viagemService: ViagemService) { 
+    
        this.viagem={empresa: ' ',cidade: ' ', roteiro: ' ', data: " ", horario: 0,
-    professor: ' ', curricular: ' ', conteudo: ' ', carga: 0, turma: ' ' }
+    professor: ' ', curricular: ' ', conteudo: ' ', carga: 0, turma: ' ', formasAprendizagem: '' }
       
   
 

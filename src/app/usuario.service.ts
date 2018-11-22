@@ -3,7 +3,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import {  Usuario } from './usuario/usuario';
 import { Observable } from 'rxjs';
 import { NavigationEnd } from '@angular/router';
-import { ConsoleReporter } from 'jasmine';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class UsuarioService {
        usuario.id = resultado.id;
     });
    }
-   deletar(usuario:Usuario): Promise<void> {
-    return this.usuarioCollection.doc(usuario.id).delete();
+   deletar(usuario): Promise<void> {
+    return this.usuarioCollection.doc(usuario).delete();
     
   }
   listarTodos(): Observable<any[]> {

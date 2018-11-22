@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Router } from '@angular/router';
+import { ViagemService } from '../viagem.service';
+import { viagem } from '../viagem/viagem';
+
 
 @Component({
   selector: 'app-menu',
@@ -12,26 +14,27 @@ export class MenuComponent implements OnInit {
   
 
 
-  constructor() { }
+  constructor(private viagemService: ViagemService) { }
   items: MenuItem[];
-  aux: MenuItem[];
+ 
   activeItem: MenuItem;
+  viagem: viagem;
 
 
   ngOnInit() {
+    
       this.items = [
-          {label: 'Cadastrar Viagem', icon: 'fa fa-fw fa-bar-chart',},
-          {label: 'ListarViagem', icon: 'fa fa-fw fa-bar-chart'},
+          {label: 'Cadastrar Viagem', icon: 'fa fa-fw fa-bar-chart', routerLink: ['/visita/cadastro']},
+          {label: 'ListarViagem', icon: 'fa fa-fw fa-bar-chart',  routerLink: ['/visita/listar']},
          
         
          
       ];
-      this.aux=[
-        {label: 'Alterar Viagem', icon: 'fa fa-fw fa-bar-chart'},
-        
-      ]
       this.activeItem = this.items[2];
-      this.activeItem= this.aux[2];
+    
+  }
+  salvar(viagem){
+    this.viagemService.salvar(viagem);
   }
 }
         

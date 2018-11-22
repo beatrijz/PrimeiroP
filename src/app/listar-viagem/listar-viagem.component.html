@@ -1,9 +1,12 @@
+<app-menu></app-menu>
 <p-table [value]="viagens">
   <ng-template pTemplate="header">
       <tr>
           <th> id  </th> 
           <th>Destino</th>
+          <th>Nome</th>
           <th>excluir esta viagem</th>
+       
           
       </tr>
   </ng-template>
@@ -11,7 +14,8 @@
       <tr>
           <td> <a [routerLink]="['/visita/visualizacaoViagem', viagem.id]">  {{ viagem.id }} </a> </td>
           <td> <a [routerLink]="['/visita/visualizacaoViagem', viagem.id]"> {{viagem.cidade}} </a> </td>
-          <td>  <p-button  (click)="deletar()">Deletar</p-button>  </td>
+          <td> <a [routerLink]="['/visita/visualizacaoViagem', viagem.id]"> {{viagem.professor}} </a> </td>
+          <td>  <p-button  (click)="deletar(viagem.id)">Deletar</p-button>  </td>
       </tr>
       
   </ng-template>

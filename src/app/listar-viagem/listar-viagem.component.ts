@@ -22,6 +22,11 @@ export class ListarViagemComponent implements OnInit {
     }
     deletar(viagem){
       this.viagemServico.deletar(viagem);
+      this.viagemServico.listarTodos().subscribe(
+        listaViagens=>{
+          this.viagens = listaViagens;
+        }
+      );
     } 
 
   ngOnInit() {

@@ -1,49 +1,50 @@
+<app-menu></app-menu>
 <h1>IDENTIFICAÇÃO</h1>
 <h2>Empresa/Evento(*):</h2>
-<input type="text" pInputText [(ngModel)]="empresa" />
+<input type="text" pInputText [(ngModel)]="viagem.empresa" />
 
 <h2>Cidade/Local:</h2>
-<input type="text" pInputText [(ngModel)]="cidade"/>
+<input type="text" pInputText [(ngModel)]="viagem.cidade"/>
 
 <h2>Roteiro:</h2>
-<input type="text" pInputText [(ngModel)]="roteiro"/>
+<input type="text" pInputText [(ngModel)]="viagem.roteiro"/>
 <h2>Data/Periodo</h2>
-<input type="text" pInputText [(ngModel)]="data"/>
+<input type="text" pInputText [(ngModel)]="viagem.data"/>
 
 <h2>Horario</h2>
-<input type="text" pInputText [(ngModel)]="horario"/>
+<input type="text" pInputText [(ngModel)]="viagem.horario"/>
 <h2>Professor(es) Responsável (is)</h2>
-<input type="text" pInputText [(ngModel)]="professor"/>
+<input type="text" pInputText [(ngModel)]="viagem.professor"/>
 <h2>Componente(s) Curricular(es)</h2>
-<input type="text" pInputText [(ngModel)]="curriculo"/>
+<input type="text" pInputText [(ngModel)]="viagem.curriculo"/>
 <h2>Conteúdo Programático</h2>
-<input type="text" pInputText [(ngModel)]="conteudo"/>
+<input type="text" pInputText [(ngModel)]="viagem.conteudo"/>
 <h2>Carga Horaria</h2>
-<input type="text" pInputText [(ngModel)]="carga"/>
+<input type="text" pInputText [(ngModel)]="viagem.carga"/>
 <h2>Turma</h2>
-<input type="text" pInputText [(ngModel)]="turma"/>
+<input type="text" pInputText [(ngModel)]="viagem.turma"/>
 <h2>Hospedagem (se houver)</h2>
-<input type="text" pInputText [(ngModel)]="hospedagem"/>
+<input type="text" pInputText [(ngModel)]="viagem.hospedagem"/>
 <h2>Endereço</h2>
-<input type="text" pInputText [(ngModel)]="endereco"/>
+<input type="text" pInputText [(ngModel)]="viagem.endereco"/>
 <h2> Outros Servidores</h2>
-<input type="text" pInputText [(ngModel)]="servico"/>
+<input type="text" pInputText [(ngModel)]="viagem.servico"/>
 <br>
 <br>
 <h2>JUSTIFICATIVA(S)</h2>
-<input type="text" pInputText [(ngModel)]="justificativas"/>
+<input type="text" pInputText [(ngModel)]="viagem.justificativas"/>
 <br>
 <br>
 <h2>OBJETIVO(S)</h2>
-<input type="text" pInputText [(ngModel)]="objetivos"/>
+<input type="text" pInputText [(ngModel)]="viagem.objetivos"/>
 <br>
 <br>
 <h2>METODOLOGIA</h2>
-<input type="text" pInputText [(ngModel)]="metodologia"/>
+<input type="text" pInputText [(ngModel)]="viagem.metodologia"/>
 <br>
 <br>
 <h2>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</h2>
-<input type="text" pInputText [(ngModel)]="formasAprendizagem"/>
+<input type="text" pInputText [(ngModel)]="viagem.formasAprendizagem"/>
 <br>
 <router-outlet></router-outlet>
 <br>

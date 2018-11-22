@@ -16,7 +16,7 @@ export interface viagem{
     justificativas?:string;
     objetivos?:string;
     metodologia?:string;
-    avaliacao?:string;
+    formasAprendizagem?: string;
 
 
 
