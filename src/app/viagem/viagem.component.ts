@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ViagemService } from '../viagem.service';
-import { viagem } from './viagem';
+import { ViagemService } from '../servicos/viagem.service';
+import { viagem } from '../modelos/viagem';
 
 @Component({
   selector: 'app-viagem',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../usuario.service';
-import { Usuario } from '../usuario/usuario';
+import { UsuarioService } from '../servicos/usuario.service';
+import { Usuario } from '../modelos/usuario';
 
 @Component({
   selector: 'app-login',
@@ -8,20 +8,15 @@ import { Usuario } from '../usuario/usuario';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  usuario: Usuario= {nome:"Leonardo", siape:12345, senha:"trtrtrt"};
-  
-
-
-
-login (usuario){
-  this.UsuarioService.login(usuario.nome, usuario.senha);
-}
+  private usuario:Usuario;
 
   constructor(private UsuarioService : UsuarioService) {
-
+      this.usuario = {nome:'', senha:'', siape:0}
    }
+
    fazerLogin(){
-     console.log(this.usuario);
+     this.UsuarioService.fazerLogin(this.usuario)
+     
 
    }
 

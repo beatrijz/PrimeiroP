@@ -1,34 +1,26 @@
-
 <html>
+  <body>
+    <p align=center><img src="marca.png"/> </p> 
+    <div class="ui-g">
+      <div class="ui-g-5"></div>
+      <div class="ui-inputgroup"> </div>
+      <input  [(ngModel)]= "usuario.nome"  id ="nomeLogin" type="text" pInputText placeholder="nome"/> 
+    </div>
 
-<body>
-  
-  <p align=center><img src="marca.png"/> </p> <br>
-  <div class="ui-g">
-      <div class="ui-g-4"></div>
-      <div class="ui-inputgroup">
-    <input [(ngModel)]="usuario.nome" type="text" pInputText placeholder="Username">         
-</div>
+    <div class="ui-g">
+      <div class="ui-g-5"></div>
+      <div class="ui-inputgroup"> </div>
+      <input  [(ngModel)]= "usuario.senha" id="senhaLogin" type="password" pInputText placeholder="Senha"/>      
+    </div>
 
-<div class="ui-inputgroup">  
-  
-    <input [(ngModel)]="usuario.senha"type="password" (click) = "fazerLogin()" pInputText placeholder="Senha"> 
-    <div class="ui-g-4"><button pButton type="button"class=".ui-button-info">Entrar</button>  </div>  
-     
-      </div>
-      
-<div class="ui-inputgroup">   
-    <div class="ui-g-4"><button pButton type="button"class=".ui-button-info">Cadastrar</button> </div>
-        
-      </div>
+    <div class="ui-g">
+      <div class="ui-g-5"> </div>
+      <div class="ui-inputgroup" ></div>
+      <div class="ui-g-5"><p-button label="entrar" (click)="fazerLogin()" ></p-button> 
+      <p-button label="cadastro" (click)="fazerLogin()" ></p-button>  </div>
+    </div>
 
- </div>
-  
-  
- 
-            
+
     
-  <br>
-
-</body>
+  </body>
 </html>

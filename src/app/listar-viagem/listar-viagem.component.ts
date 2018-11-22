@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { viagem } from '../viagem/viagem';
-import { ViagemService } from '../viagem.service';
+import { viagem } from '../modelos/viagem';
+import { ViagemService } from '../servicos/viagem.service';
 
 @Component({
   selector: 'app-listar-viagem',

@@ -11,9 +11,9 @@ import {AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { configuracao } from 'src/environments/Firebase';
 import { UsuarioComponent } from './usuario/usuario.component';
-import { UsuarioService } from './usuario.service';
+import { UsuarioService } from './servicos/usuario.service';
 import { ViagemComponent } from './viagem/viagem.component';
-import { ViagemService } from './viagem.service';
+import { ViagemService } from './servicos/viagem.service';
 import { ListarViagemComponent } from './listar-viagem/listar-viagem.component';
 import { VisualizacaoViagemComponent } from './visualizacao-viagem/visualizacao-viagem.component';
 import { AlterarViagemComponent } from './alterar-viagem/alterar-viagem.component';
@@ -24,18 +24,14 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 //import {BreadcrumbModule} from 'primeng/breadcrumb';
 
-
-
 export const rotas : Routes = [ 
   {path: "usuario/cadastro", component:UsuarioComponent},
   {path: "visita/cadastro", component:ViagemComponent},
   {path: "visita/listar", component:ListarViagemComponent},
   {path: "usuario/listar", component:ListarUsuarioComponent},
-  {path: "visita/visualizacaoViagem", component:VisualizacaoViagemComponent},
+  {path: "visita/visualizacao/:id", component:VisualizacaoViagemComponent},
   {path: "", component:LoginComponent},
   {path: "menu", component:MenuComponent},
- 
-
 
 ];
 

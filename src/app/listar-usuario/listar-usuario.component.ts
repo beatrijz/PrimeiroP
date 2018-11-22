@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { viagem } from '../viagem/viagem';
-import { Usuario } from '../usuario/usuario';
-import { UsuarioService } from '../usuario.service';
+import { viagem } from '../modelos/viagem';
+import { Usuario } from '../modelos/usuario';
+import { UsuarioService } from '../servicos/usuario.service';
 
 @Component({
   selector: 'app-listar-usuario',

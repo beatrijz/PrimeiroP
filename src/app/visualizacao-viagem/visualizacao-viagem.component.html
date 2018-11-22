@@ -1,3 +1,30 @@
-<p>
-  visualizacao-viagem works!
-</p>
+<h1>Listagem das visitas técnicas</h1>
+<p-table [value]="viagensTecnicas">   
+    <ng-template pTemplate="header">
+       
+            <tr>  <th>  Informações da sua viagem  </th> </tr>
+       
+    </ng-template>
+    <ng-template pTemplate="body" let-viagemTecnica>
+        
+        <tr><td>{{viagemTecnica.empresa }}</td>
+        <tr><td>{{viagemTecnica.cidade }}</td> </tr>
+        <tr><td>{{viagemTecnica.roteiro }}</td> </tr>
+        <tr><td>{{viagemTecnica.data }} </td> </tr>
+        <tr><td>{{viagemTecnica.saida }}</td> </tr>
+        <tr><td>{{viagemTecnica.retorno }}</td> </tr>
+        <tr><td>{{viagemTecnica.professor }}</td> </tr>
+        <tr><td>{{viagemTecnica.componente }}</td> </tr>
+        <tr><td>{{viagemTecnica.conteudo }}</td> </tr>
+        <tr><td>{{viagemTecnica.cargaHoraria }}</td> </tr>
+        <tr><td>{{viagemTecnica.turma }}</td> </tr>
+        <tr><td>{{viagemTecnica.quantidadeAlunos }}</td> </tr>
+        <tr><td>{{viagemTecnica.endereco }}</td> </tr>
+        <tr><td>{{viagemTecnica.outrosServidores }}</td> </tr>
+        <tr><td>{{viagemTecnica.justificativas }}</td> </tr>
+        <tr><td>{{viagemTecnica.objetivo }}</td> </tr>
+        <tr> <td>{{viagemTecnica.metodologia }}</td> </tr>
+        <tr> <td>{{viagemTecnica.formasDeAvaliacaoDaAprendizagem}}</td> </tr>
+
+    </ng-template>
+</p-table>

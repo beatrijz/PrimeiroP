@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
-import { viagem } from './viagem/viagem';
+import { viagem } from '../modelos/viagem';
 import { Observable } from 'rxjs';
 
 
@@ -34,15 +34,17 @@ export class ViagemService {
       }); });
     return meuObservable;
   }
-  listarPorId(viagem) {
+  
+  listarPorId(id) {
     return new Observable(observer => {
-      let doc = this.viagemCollection.doc(viagem.id);
+      let doc = this.viagemCollection.doc(id);
       doc.snapshotChanges().subscribe(result => {
         let id = result.payload.id;
         let data = result.payload.data()
         let document = { id: id, ...data };
         observer.next(document);
         observer.complete();
+        
       });
     });
   }
@@ -52,6 +54,9 @@ export class ViagemService {
     return this.viagemCollection.doc(viagem.id).delete();
   }
   
+  alterar(viagem){
+
+  }
   
 
   
