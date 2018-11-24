@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../servicos/usuario.service';
 import { Usuario } from '../modelos/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,12 @@ export class LoginComponent implements OnInit {
      this.UsuarioService.fazerLogin(this.usuario)
      
 
+   }
+
+   irTelaCadastro(){
+    this.UsuarioService.irTelaLogin();
+     
+     
    }
 
   ngOnInit() {

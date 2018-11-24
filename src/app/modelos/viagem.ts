@@ -1,23 +1,24 @@
 export interface viagem{
-    id?:string;
-    empresa: string;
-    cidade: string;
-    roteiro: string;
-    data: string;
-    horario: number;
-    professor: string;
-    curricular: string;
-    conteudo: string;
-    carga: number;
-    turma: string;
-    hospedagem?:string;
-    endereco?: string;
-    servidores?:string;
-    justificativas?:string;
-    objetivos?:string;
-    metodologia?:string;
-    avaliacao?:string;
-
-
+    empresa:string ;
+    cidade:string ;
+    roteiro:String; 
+    data:string;
+    horarioSaida:String;
+    horarioRetorno:String;
+    professor:string;
+    componente:String;
+    conteudo:string ;
+    cargaHoraria:number;
+    turma:string ;
+    quantidadeAlunos:number ;
+    hospedagem?:String ;
+    endereco:String ;
+    servidor:String ;
+    justificativa:String ;
+    objetivo:String;
+    metodologia:String ;
+    formasAprendizagem:String ;
+    id?:String ;
+    idDosuario?:String ;
 
 }

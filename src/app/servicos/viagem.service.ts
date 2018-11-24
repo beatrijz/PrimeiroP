@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { viagem } from '../modelos/viagem';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -10,12 +11,13 @@ import { Observable } from 'rxjs';
 export class ViagemService {
   viagemCollection : AngularFirestoreCollection<viagem>;
 
-  constructor(public angularFireStore:AngularFirestore) {
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router) {
     this.viagemCollection= this.angularFireStore.collection<viagem> ("viagem");
    }
    salvar(viagem: viagem){
     this.viagemCollection.add(viagem).then(resultado => {
       viagem.id = resultado.id;
+      console.log("cadastrado");
    });
   }
 
@@ -51,10 +53,17 @@ export class ViagemService {
  
 
   deletar(viagem): Promise<void> {
-    return this.viagemCollection.doc(viagem.id).delete();
+    return this.viagemCollection.doc(viagem).delete();
+    
   }
+
+
+
   
-  alterar(viagem){
+  atualizar(){
+    this.rotas.navigate(['/usuario/cadastro']);
+
+
 
   }
   

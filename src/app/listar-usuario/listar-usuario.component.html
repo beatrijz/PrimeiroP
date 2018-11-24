@@ -2,6 +2,10 @@
   <ng-template pTemplate="header">
       <tr>
           <th> id  </th>
+          <th> nome </th>
+          <th> siape </th>
+          <th> senha </th>
+
           <th>excluir este usuario</th>
           
       </tr>
@@ -9,8 +13,10 @@
   <ng-template pTemplate="body" let-usuario>
       <tr>
           <td> <a [routerLink]="['/usuario/listar', usuario.id]">  {{ usuario.id }} </a> </td>
-          <td> <a [routerLink]="[' /usuario/listar', usuario.id]"> {{usuario.cidade}} </a> </td>
-          <td>  <p-button  (click)="deletar()">Deletar</p-button>  </td>
+          <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.nome}} </a> </td>
+          <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.siape}} </a> </td>
+          <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.senha}} </a> </td>
+          <td>  <p-button  (click)="deletar(usuario)">Deletar</p-button>  </td>
       </tr>
       
   </ng-template>

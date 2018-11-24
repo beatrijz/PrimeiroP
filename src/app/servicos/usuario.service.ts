@@ -14,6 +14,7 @@ export class UsuarioService {
   usuarioCollection : AngularFirestoreCollection<Usuario>;
   private usuarioAutenticado:boolean=false;
  usuarios:Usuario[];
+ 
 
   
 
@@ -24,6 +25,8 @@ export class UsuarioService {
   salvar(usuario:Usuario){
     this.usuarioCollection.add(usuario).then(resultado => {
     usuario.id = resultado.id;
+    
+
     });
   }
  
@@ -57,8 +60,10 @@ export class UsuarioService {
   }
 
   deletar(usuario): Promise<void> {
-    return this.usuarioCollection.doc(usuario.id).delete();
+    return this.usuarioCollection.doc(usuario).delete();
   }
+
+  
 
   fazerLogin(usuario:Usuario){
     // Fazer uma consulta no documents usuário, procurar por um com nome e senha iguais ao que veio no parâmetro
@@ -68,21 +73,20 @@ export class UsuarioService {
     ref.where("nome",'==',usuario.nome)
     .where("senha", "==", usuario.senha) )
     .valueChanges().subscribe(resultado=>{
-      console.log(resultado );
+      console.log(resultado);
+      
 
       if( resultado.length == 0){
-        console.log ("usuario não cadastrado ou senha ou nome  incorreta ");
+        console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
       }else{
         this.rotas.navigate(['/visita/listar'])
-
       }
-
-      // se houver resultado, então o usuário fez login
-      /*this.usuarioAutenticado=true;
-        this.rotas.navigate(['/ListagensVisitas'])
-        console.log("autenticado");
-        console.log(usuario.nome +" == "+ this.usuarios[i].nome);
-       console.log(usuario.senha +" == "+ this.usuarios[i].senha);*/
     });
   }
+
+  irTelaLogin(){
+    this.rotas.navigate(['/usuario/cadastro'])
+  }
+
+  
 }

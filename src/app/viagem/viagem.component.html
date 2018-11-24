@@ -1,50 +1,45 @@
-<h1>IDENTIFICAÇÃO</h1>
-<h2>Empresa/Evento(*):</h2>
-<input type="text" pInputText [(ngModel)]="empresa" />
-
-<h2>Cidade/Local:</h2>
-<input type="text" pInputText [(ngModel)]="cidade"/>
-
-<h2>Roteiro:</h2>
-<input type="text" pInputText [(ngModel)]="roteiro"/>
-<h2>Data/Periodo</h2>
-<input type="text" pInputText [(ngModel)]="data"/>
-
-<h2>Horario</h2>
-<input type="text" pInputText [(ngModel)]="horario"/>
-<h2>Professor(es) Responsável (is)</h2>
-<input type="text" pInputText [(ngModel)]="professor"/>
-<h2>Componente(s) Curricular(es)</h2>
-<input type="text" pInputText [(ngModel)]="curriculo"/>
-<h2>Conteúdo Programático</h2>
-<input type="text" pInputText [(ngModel)]="conteudo"/>
-<h2>Carga Horaria</h2>
-<input type="text" pInputText [(ngModel)]="carga"/>
-<h2>Turma</h2>
-<input type="text" pInputText [(ngModel)]="turma"/>
-<h2>Hospedagem (se houver)</h2>
-<input type="text" pInputText [(ngModel)]="hospedagem"/>
-<h2>Endereço</h2>
-<input type="text" pInputText [(ngModel)]="endereco"/>
-<h2> Outros Servidores</h2>
-<input type="text" pInputText [(ngModel)]="servico"/>
-<br>
-<br>
-<h2>JUSTIFICATIVA(S)</h2>
-<input type="text" pInputText [(ngModel)]="justificativas"/>
-<br>
-<br>
-<h2>OBJETIVO(S)</h2>
-<input type="text" pInputText [(ngModel)]="objetivos"/>
-<br>
-<br>
-<h2>METODOLOGIA</h2>
-<input type="text" pInputText [(ngModel)]="metodologia"/>
-<br>
-<br>
-<h2>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</h2>
-<input type="text" pInputText [(ngModel)]="formasAprendizagem"/>
-<br>
 <router-outlet></router-outlet>
+<h2>IDENTIFICAÇÃO</h2> <br/>
+<b>Empresa/Evento(*):</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.empresa" /><br/><br/>
+<b>Cidade/Local:</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.cidade"/> <br/><br/>
+<b>Roteiro:</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.roteiro"/> <br/><br/>
+<b>Data/Periodo</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.data"/> <br/><br/>
+<b>Horario saída</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.horarioSaida"/><br/><br/>
+<b>Horario retorno</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.horarioRetorno"/><br/><br/>
+<b>Professor(es) Responsável (is)</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.professor"/><br/><br/>
+<b>Componente(s) Curricular(es)</b>  <br/>
+<input type="text" pInputText [(ngModel)]="viagem.componente"/><br/><br/>
+<b>Conteúdo Programático</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.conteudo"/><br/><br/>
+<b>Carga Horaria</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.cargaHoraria"/><br/><br/>
+<b>Turma</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.turma"/><br/><br/>
+<b>Hospedagem (se houver)</b> <br/>
+<b>Quantitativo de alunos</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.quantidadeAlunos"/><br/><br/>
+<b>Hospedagem (se houver)</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.hospedagem"/><br/><br/>
+<b>Endereço</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.endereco"/><br/><br/>
+<b> Outros Servidores</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.servidor"/> <br/><br/>
+<br>
+<b>JUSTIFICATIVA(S)</b>  <br/>
+<input type="text" pInputText [(ngModel)]="viagem.justificativa"/> <br/><br/>
+<b>OBJETIVO(S)</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.objetivo"/> <br/><br/>
+<b>METODOLOGIA</b><br/>
+<input type="text" pInputText [(ngModel)]="viagem.metodologia"/><br/><br/>
+<b>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</b><br/>
+<input type="text" pInputText [(ngModel)]="viagem.formasAprendizagem"/><br/><br/>
+<br>
 <br>
 <button pButton type="button" label="Cadastrar" (click) = 'salvar()' ></button>

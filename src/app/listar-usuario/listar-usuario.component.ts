@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { viagem } from '../modelos/viagem';
 import { Usuario } from '../modelos/usuario';
 import { UsuarioService } from '../servicos/usuario.service';
 
@@ -9,21 +8,19 @@ import { UsuarioService } from '../servicos/usuario.service';
   styleUrls: ['./listar-usuario.component.css']
 })
 export class ListarUsuarioComponent implements OnInit {
-
- 
   usuario:Usuario[];
 
   constructor(private usuarioService:UsuarioService) {
-
     this.usuarioService.listarTodos().subscribe(
       listaUsuario=>{
         this.usuario = listaUsuario;
       }
     );
-
+  }
+  deletar(usuario){
+    this.usuarioService.deletar(usuario.id);
   }
 
   ngOnInit() {
   }
-
 }

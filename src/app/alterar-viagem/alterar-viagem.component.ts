@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViagemService } from '../servicos/viagem.service';
 
 @Component({
   selector: 'app-alterar-viagem',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlterarViagemComponent implements OnInit {
 
-  constructor() { }
+  constructor(private ViagemService:ViagemService) { }
 
   ngOnInit() {
+  }
+
+
+
+  alterar(){
+    this.ViagemService.atualizar();
   }
 
 }

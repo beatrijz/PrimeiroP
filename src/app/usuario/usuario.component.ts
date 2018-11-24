@@ -15,16 +15,17 @@ export class UsuarioComponent implements OnInit {
 
   usuario:Usuario;
 
-  constructor(
-    public router : Router,
-   private usuarioService: UsuarioService) {
-     let usuario: Usuario= {nome:"Leonardo", siape:12345, senha:"trtrtrt"};
-    
-     this.usuarioService.salvar(usuario);
-
-    }
+  constructor(public router : Router,private usuarioService: UsuarioService) {
+     this.usuario= {nome:"", siape:0, senha:""};
+     
+  }
 
   ngOnInit() {
+  }
+
+  salvar(){
+    this.usuarioService.salvar(this.usuario);
+
   }
 
 }
