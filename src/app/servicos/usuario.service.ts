@@ -25,6 +25,7 @@ export class UsuarioService {
   salvar(usuario:Usuario){
     this.usuarioCollection.add(usuario).then(resultado => {
     usuario.id = resultado.id;
+    console.log(usuario.nome+"cadastrado com sucesso!")
     
 
     });
@@ -60,7 +61,9 @@ export class UsuarioService {
   }
 
   deletar(usuario): Promise<void> {
+   
     return this.usuarioCollection.doc(usuario).delete();
+    console.log("deletado com sucesso!");
   }
 
   

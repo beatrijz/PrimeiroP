@@ -53,7 +53,9 @@ export class ViagemService {
  
 
   deletar(viagem): Promise<void> {
+    console.log("deletado com sucesso 0!");
     return this.viagemCollection.doc(viagem).delete();
+    console.log("deletado com sucesso 1!");
  
   }  
   atualizar(){
