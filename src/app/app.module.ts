@@ -22,7 +22,8 @@ import { AlterarUsuarioComponent } from './alterar-usuario/alterar-usuario.compo
 import { ListarUsuarioComponent } from './listar-usuario/listar-usuario.component';
 import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
-//import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {BreadcrumbModule} from 'primeng/breadcrumb';
+import {TabMenuModule} from 'primeng/tabmenu';
 
 export const rotas : Routes = [ 
   {path: "usuario/cadastro", component:UsuarioComponent},
@@ -48,7 +49,6 @@ export const rotas : Routes = [
     ListarUsuarioComponent,
     LoginComponent,
     MenuComponent,
-  //  BreadcrumbModule,
   
     
     
@@ -65,8 +65,11 @@ export const rotas : Routes = [
     RouterModule.forRoot(rotas),
     FullCalendarModule,
     AngularFireModule.initializeApp(configuracao),
-   TableModule,
-  // BreadcrumbModule
+    TableModule,
+    BreadcrumbModule,
+    TabMenuModule,
+    
+    
    
 
 

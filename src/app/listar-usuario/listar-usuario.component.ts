@@ -9,6 +9,7 @@ import { UsuarioService } from '../servicos/usuario.service';
 })
 export class ListarUsuarioComponent implements OnInit {
   usuario:Usuario[];
+  
 
   constructor(private usuarioService:UsuarioService) {
     this.usuarioService.listarTodos().subscribe(
@@ -23,4 +24,5 @@ export class ListarUsuarioComponent implements OnInit {
 
   ngOnInit() {
   }
+
 }

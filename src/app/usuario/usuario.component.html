@@ -3,10 +3,11 @@
 <br>
 <input type="text" pInputText [(ngModel)]="usuario.nome"/>
 <h2>Siape:</h2>
-<input type="text" pInputText [(ngModel)]= "usuario.siape"/>
+<input type="text" pInputText [(ngModel)]="usuario.siape"/>
 <h2>Senha:</h2>
 <input type="password" pInputText [(ngModel)]="usuario.senha"/>
 <router-outlet></router-outlet>
-<button pButton type="button" label="Cadastrar" (click)='salvar()'> </button> 
-<button pButton type="button" label="Login" (click)='salvar()'></button>
+<button pButton type="button" label="Cadastrar" (click) = 'salvar()' ></button> 
+<button pButton type="button" label="Login" (click) = 'Login()' ></button>
+
 

@@ -9,19 +9,15 @@ import { viagem } from '../modelos/viagem';
   styleUrls: ['./viagem.component.css']
 })
 export class ViagemComponent implements OnInit {
+
   
   viagem: viagem;
   constructor(public router : Router,private viagemService: ViagemService) { 
-  this.viagem= {cidade:'',roteiro:'',empresa:'',data:'',horarioSaida:"",horarioRetorno:"",professor:"",componente:"",conteudo:"",cargaHoraria:0,turma:"",hospedagem:'',endereco:"",servidor:"",justificativa:"",objetivo:"",metodologia:"",formasAprendizagem:"",quantidadeAlunos:0};
-      
-  
-
-
-    }
+   this.viagem= {cidade:'',roteiro:'',empresa:'',data:'',horarioSaida:"",horarioRetorno:"",professor:"",componente:"",conteudo:"",cargaHoraria:0,turma:"",hospedagem:'',endereco:"",servidor:"",justificativa:"",objetivo:"",metodologia:"",formasAprendizagem:"",quantidadeAlunos:0};
+  }
 
   ngOnInit() {
   }
-
   salvar(){
     this.viagemService.salvar(this.viagem);
   }

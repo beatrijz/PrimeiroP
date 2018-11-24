@@ -13,6 +13,7 @@ import { Usuario } from '../modelos/usuario';
 })
 export class UsuarioComponent implements OnInit {
 
+
   usuario:Usuario;
 
   constructor(public router : Router,private usuarioService: UsuarioService) {
@@ -22,6 +23,8 @@ export class UsuarioComponent implements OnInit {
 
   ngOnInit() {
   }
+  
+  
 
   salvar(){
     this.usuarioService.salvar(this.usuario);

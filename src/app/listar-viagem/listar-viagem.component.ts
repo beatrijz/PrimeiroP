@@ -16,12 +16,15 @@ export class ListarViagemComponent implements OnInit {
         this.viagens = listaViagens;
       }
     );
+
   }
   deletar(viagem){
     this.viagemServico.deletar(viagem.id);
   }
-  
+    
+
   ngOnInit() {
   }
+  
 }
 

@@ -54,12 +54,8 @@ export class ViagemService {
 
   deletar(viagem): Promise<void> {
     return this.viagemCollection.doc(viagem).delete();
-    
-  }
-
-
-
-  
+ 
+  }  
   atualizar(){
     this.rotas.navigate(['/usuario/cadastro']);
 
