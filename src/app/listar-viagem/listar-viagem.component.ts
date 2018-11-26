@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { viagem } from '../modelos/viagem';
+import { Usuario } from '../modelos/usuario';
 import { ViagemService } from '../servicos/viagem.service';
 
 @Component({
@@ -9,9 +10,11 @@ import { ViagemService } from '../servicos/viagem.service';
 })
 export class ListarViagemComponent implements OnInit {
   viagens:viagem[];
+  usuario:Usuario;
 
   constructor(private viagemServico:ViagemService){
-    this.viagemServico.listarTodos().subscribe(
+
+   this.viagemServico.getViagensUsuario().subscribe(
       listaViagens=>{
         this.viagens = listaViagens;
       }
@@ -21,6 +24,10 @@ export class ListarViagemComponent implements OnInit {
   deletar(viagem){
     this.viagemServico.deletar(viagem.id);
   }
+
+  // listarUsuarioEspecifico(){
+  //   this.viagemServico.listarUsuarioEspecifico(this.usuario);
+  // }
     
 
   ngOnInit() {

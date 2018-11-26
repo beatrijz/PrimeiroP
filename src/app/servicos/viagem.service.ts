@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { viagem } from '../modelos/viagem';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import {Usuario} from '../modelos/usuario'
 
 
 @Injectable({
@@ -14,11 +15,59 @@ export class ViagemService {
   constructor(public angularFireStore:AngularFirestore,private rotas:Router) {
     this.viagemCollection= this.angularFireStore.collection<viagem> ("viagem");
    }
-   salvar(viagem: viagem){
-    this.viagemCollection.add(viagem).then(resultado => {
-      viagem.id = resultado.id;
-      console.log("cadastrado");
-   });
+  //  salvar(viagem: viagem){
+  //   this.viagemCollection.add(viagem).then(resultado => {
+  //     viagem.id = resultado.id;
+  //     console.log("cadastrado");
+  //  });
+  // }
+
+  salvar(viagem:viagem){
+    if(viagem.empresa=="")
+    {console.log("o campo empresa é obrigatório");}
+    if(viagem.professor=="")
+    {console.log("o campo professor é obrigatório");}
+    if(viagem.cidade=="")
+    {console.log("o campo cidade é obrigatório");}
+    if(viagem.data=="")
+    {console.log("o campo data é obrigatório");}
+    if(viagem.horarioSaida=="")
+    {console.log("o campo horário de saída é obrigatório");}
+    if(viagem.horarioRetorno=="")
+    {console.log("o campo horário de retorno é obrigatório");}
+    if(viagem.componente=="")
+    {console.log("o campo componente é obrigatório");}
+    if(viagem.conteudo=="")
+    {console.log("o campo conteúdo é obrigatório");}
+    if(viagem.cargaHoraria==null)
+    {console.log("o campo carga horária é obrigatório");}
+    if(viagem.turma=="")
+    {console.log("o campo turma é obrigatório");}
+    if(viagem.quantidadeAlunos==null)
+    {console.log("o campo quantitativo de alunos é obrigatório");}
+    if(viagem.endereco=="")
+    {console.log("o campo endereço é obrigatório");}
+    if(viagem.servidor=="")
+    {console.log("o campo servidor é obrigatório");}
+    if(viagem.justificativa=="")
+    {console.log("o campo justificativa é obrigatório");}
+    if(viagem.objetivo=="")
+    {console.log("o campo objetivo é obrigatório");}
+    if(viagem.metodologia=="")
+    {console.log("o campo metodologia de alunos é obrigatório");}
+    if(viagem.formasAprendizagem=="")
+    {console.log("o campo formas de aprendizagem é obrigatório");}
+    else{
+    this.viagemCollection.add(viagem).then(resultado =>{
+    let userDoc= this.viagemCollection.doc(resultado.id);
+    userDoc.update({id:resultado.id})
+    console.log(viagem.id +"= id viagem");
+    userDoc.update({idUsuario: sessionStorage.getItem('id')})
+    console.log(viagem.idUsuario+" idDo usuario");
+    this.rotas.navigate(['/visita/listar']);
+    
+
+    });}
   }
 
   listarTodos(): Observable<any[]> {
@@ -50,7 +99,22 @@ export class ViagemService {
       });
     });
   }
- 
+
+
+  getViagensUsuario() {
+     return this.angularFireStore.collection<viagem>("viagem", ref=>  
+      ref.where ("idUsuario",'==',sessionStorage.getItem('id')))
+      .valueChanges();
+      
+    }
+  
+       
+      
+
+
+   
+    
+  
 
   deletar(viagem): Promise<void> {
     console.log("deletado com sucesso 0!");

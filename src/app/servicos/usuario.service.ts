@@ -21,15 +21,36 @@ export class UsuarioService {
   constructor(public angularFireStore:AngularFirestore,private rotas:Router) {
     this.usuarioCollection= this.angularFireStore.collection<Usuario> ("usuario");
   }
+  
+  cadastrar(usuario:Usuario){
+    if(usuario.senha==""){
+      console.log("campo senha é obrigatóro");
+    }
+    if(usuario.siape==null){
+      console.log("campo siape é obrigatóro");
+    }
+    if(usuario.nome==""){
+      console.log("campo nome é obrigatóro");
 
-  salvar(usuario:Usuario){
-    this.usuarioCollection.add(usuario).then(resultado => {
-    usuario.id = resultado.id;
-    console.log(usuario.nome+"cadastrado com sucesso!")
-    
+    } else {
+      this.angularFireStore.collection<Usuario>("usuario", ref=>
+      ref.where("siape",'==',usuario.siape))
+      .valueChanges().subscribe(resultado=>{ 
 
+      if( resultado.length == 0){
+        this.usuarioCollection.add(usuario).then(resultadoUsuario =>{
+          let userDoc= this.usuarioCollection.doc(resultadoUsuario.id);
+          userDoc.update({id:resultadoUsuario.id})
+          console.log(usuario.nome+"usuário cadastrado!");
+        });
+      }else{
+        console.log("usuário não cadastrado!");
+      }
     });
+   }
   }
+
+
  
   listarTodos(): Observable<any[]> {
     let resultados: any[] = [];
@@ -47,6 +68,10 @@ export class UsuarioService {
     return meuObservable;
   }
 
+  listarEspecifico(){
+
+  }
+
   listarPorId(usuarioId) {
     return new Observable(observer => {
       let doc = this.usuarioCollection.doc(usuarioId);
@@ -61,34 +86,37 @@ export class UsuarioService {
   }
 
   deletar(usuario): Promise<void> {
-   
     return this.usuarioCollection.doc(usuario).delete();
-    console.log("deletado com sucesso!");
+    
   }
 
   
 
   fazerLogin(usuario:Usuario){
-    // Fazer uma consulta no documents usuário, procurar por um com nome e senha iguais ao que veio no parâmetro
-
-    //this.usuarioCollection.doc(usuario.nome)
     this.angularFireStore.collection<Usuario>("usuario", ref=>
-    ref.where("nome",'==',usuario.nome)
+    ref.where("siape",'==',usuario.siape)
     .where("senha", "==", usuario.senha) )
     .valueChanges().subscribe(resultado=>{
-      console.log(resultado);
-      
+    console.log(resultado);
 
       if( resultado.length == 0){
         console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
       }else{
         this.rotas.navigate(['/visita/listar'])
+        sessionStorage.setItem('id',resultado[0].id);
+        console.log(resultado[0].id);
       }
     });
   }
 
+
   irTelaLogin(){
-    this.rotas.navigate(['/usuario/cadastro'])
+    this.rotas.navigate(['/'])
+  }
+
+  irTelaCadastro(){
+    this.rotas.navigate(['/usuario/cadastro']);
+    console.log("vai");
   }
 
   

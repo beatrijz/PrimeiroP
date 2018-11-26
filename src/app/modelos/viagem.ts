@@ -1,3 +1,5 @@
+import { Usuario } from "./usuario";
+
 export interface viagem{
     empresa:string ;
     cidade:string ;
@@ -19,6 +21,6 @@ export interface viagem{
     metodologia:String ;
     formasAprendizagem:String ;
     id?:String ;
-    idDosuario?:String ;
+    idUsuario?: String ;
 
 }

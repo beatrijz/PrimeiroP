@@ -17,17 +17,20 @@ export class UsuarioComponent implements OnInit {
   usuario:Usuario;
 
   constructor(public router : Router,private usuarioService: UsuarioService) {
-     this.usuario= {nome:"", siape:0, senha:""};
+     this.usuario= {nome:"", siape:null, senha:""};
      
   }
 
   ngOnInit() {
   }
   
-  
+
+  irTelaLogin(){
+    this.usuarioService.irTelaLogin();
+  }
 
   salvar(){
-    this.usuarioService.salvar(this.usuario);
+    this.usuarioService.cadastrar(this.usuario);
 
   }
 

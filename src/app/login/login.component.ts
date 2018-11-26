@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   private usuario:Usuario;
 
   constructor(private UsuarioService : UsuarioService) {
-      this.usuario = {nome:'', senha:'', siape:0}
+      this.usuario = {nome:'', senha:'', siape:null}
    }
 
    fazerLogin(){
@@ -22,8 +22,7 @@ export class LoginComponent implements OnInit {
    }
 
    irTelaCadastro(){
-    this.UsuarioService.irTelaLogin();
-     
+    this.UsuarioService.irTelaCadastro();
      
    }
 
