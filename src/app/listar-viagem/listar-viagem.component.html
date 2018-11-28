@@ -2,21 +2,21 @@
 <p-table [value]="viagens">
   <ng-template pTemplate="header">
       <tr>
-          <th> id  </th> 
+          <th>Turma</th> 
           <th>Destino</th>
-          <th>excluir esta viagem</th>
-          <th>alterar esta viagem</th>
+          <th>Excluir</th>
+          <th>Alterar </th>
 
           
       </tr>
   </ng-template>
-  <ng-template pTemplate="body" let-viagem>
+  <ng-template pTemplate="body" let-viagem> 
       <tr>
 
-          <td> <a [routerLink]="['/visita/visualizacao', viagem.id]">  {{ viagem.id }} </a> </td>
+          <td> <a [routerLink]="['/visita/visualizacao', viagem.id]">  {{viagem.turma}} </a> </td>
           <td> <a [routerLink]="['/visita/visualizacao', viagem.id]"> {{viagem.cidade}} </a> </td>
           <td>  <p-button  (click)="deletar(viagem)">Deletar</p-button>  </td>
-          <td>  <p-button (click)= "atualizar()">alterar</p-button>  </td>
+          <td>  <p-button (click)= "irParaAlterar(viagem.id)">alterar</p-button>  </td>
 
       </tr>
       

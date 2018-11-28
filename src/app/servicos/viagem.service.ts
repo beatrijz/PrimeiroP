@@ -10,6 +10,8 @@ import {Usuario} from '../modelos/usuario'
   providedIn: 'root'
 })
 export class ViagemService {
+ 
+
   viagemCollection : AngularFirestoreCollection<viagem>;
 
   constructor(public angularFireStore:AngularFirestore,private rotas:Router) {
@@ -85,10 +87,36 @@ export class ViagemService {
       }); });
     return meuObservable;
   }
+   
+atualizarViagem(id){
+  let viagem= this.angularFireStore.doc('viagem/'+id);
+  console.log(id);
+  viagem.update({id:id});
   
-  listarPorId(id) {
+  
+}
+viagem:viagem;
+id;
+
+
+atualizarTodos(id, viagem){
+  let viagemDoc=this.angularFireStore.doc('viagem/'+id);
+  console.log(viagem);
+  console.log(id);
+  viagemDoc.update({empresa: viagem.empresa, cidade: viagem.cidade, roteiro: viagem.roteiro,
+  data: viagem.data, horarioSaida: viagem.horarioSaida, horarioRetorno: viagem.horarioRetorno,
+  professor: viagem.professor, componente: viagem.componente, conteudo: viagem.conteudo,
+  cargaHoraria: viagem.cargaHoraria, turma: viagem.turma, quantidadeAlunos: viagem.quantidadeAlunos,
+  hospedagem: viagem.hospedagem, endereco: viagem.endereco, servidor: viagem.servidor,
+  justificativa: viagem.justificativa, objetivo: viagem.objetivo, metodologia: viagem.metodologia, formasAprendizagem: viagem.formasAprendizagem });
+
+
+}
+
+  
+  listarPorId(viagem) {
     return new Observable(observer => {
-      let doc = this.viagemCollection.doc(id);
+      let doc = this.viagemCollection.doc(viagem);
       doc.snapshotChanges().subscribe(result => {
         let id = result.payload.id;
         let data = result.payload.data()

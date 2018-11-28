@@ -25,6 +25,13 @@ import { MenuComponent } from './menu/menu.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {TabMenuModule} from 'primeng/tabmenu';
 
+//import {MessageService} from 'primeng//api';
+//import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+
+
+
+
+
 export const rotas : Routes = [ 
   {path: "usuario/cadastro", component:UsuarioComponent},
   {path: "visita/cadastro", component:ViagemComponent},
@@ -33,6 +40,8 @@ export const rotas : Routes = [
   {path: "visita/visualizacao/:id", component:VisualizacaoViagemComponent},
   {path: "", component:LoginComponent},
   {path: "menu", component:MenuComponent},
+  {path: "visita/atualizar/:id", component:AlterarViagemComponent},
+
 
 ];
 
@@ -49,6 +58,7 @@ export const rotas : Routes = [
     ListarUsuarioComponent,
     LoginComponent,
     MenuComponent,
+   
   
     
     
@@ -67,7 +77,9 @@ export const rotas : Routes = [
     AngularFireModule.initializeApp(configuracao),
     TableModule,
     BreadcrumbModule,
-    TabMenuModule,
+    TabMenuModule
+    //MessageService,
+    //Message
     
     
    
@@ -76,7 +88,7 @@ export const rotas : Routes = [
     
   ],
   
-  providers: [ViagemService, AngularFirestore, UsuarioService],
+  providers: [ViagemService,AngularFirestore, UsuarioService],
   bootstrap: [AppComponent]
   
 })

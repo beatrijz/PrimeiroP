@@ -1,3 +1,43 @@
-<p>
-  alterar-viagem works!
-</p>
+<app-menu></app-menu>
+<router-outlet></router-outlet>
+<h2>IDENTIFICAÇÃO</h2> <br/>
+<b>Empresa/Evento(*):</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.empresa" /><br/><br/>
+<b>Cidade/Local:</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.cidade"/> <br/><br/>
+<b>Roteiro:</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.roteiro"/> <br/><br/>
+<b>Data/Periodo</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.data"/> <br/><br/>
+<b>Horario saída</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.horarioSaida"/><br/><br/>
+<b>Horario retorno</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.horarioRetorno"/><br/><br/>
+<b>Professor(es) Responsável (is)</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.professor"/><br/><br/>
+<b>Componente(s) Curricular(es)</b>  <br/>
+<input type="text" pInputText [(ngModel)]="viagem.componente"/><br/><br/>
+<b>Conteúdo Programático</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.conteudo"/><br/><br/>
+<b>Carga Horaria</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.cargaHoraria"/><br/><br/>
+<b>Turma</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.turma"/><br/><br/>
+<b>Quantitativo de alunos</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.quantidadeAlunos"/><br/><br/>
+<b>Hospedagem (se houver)</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.hospedagem"/><br/><br/>
+<b>Endereço</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.endereco"/><br/><br/>
+<b> Outros Servidores</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.servidor"/> <br/><br/>
+<br>
+<b>JUSTIFICATIVA(S)</b>  <br/>
+<input type="text" pInputText [(ngModel)]="viagem.justificativa"/> <br/><br/>
+<b>OBJETIVO(S)</b> <br/>
+<input type="text" pInputText [(ngModel)]="viagem.objetivo"/> <br/><br/>
+<b>METODOLOGIA</b><br/>
+<input type="text" pInputText [(ngModel)]="viagem.metodologia"/><br/><br/>
+<b>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</b><br/>
+<input type="text" pInputText [(ngModel)]="viagem.formasAprendizagem"/><br/><br/>
+<button pButton type="button" label="atualizar" (click) = 'atualizarViagem(viagem.id)' ></button>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { viagem } from '../modelos/viagem';
 import { Usuario } from '../modelos/usuario';
 import { ViagemService } from '../servicos/viagem.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listar-viagem',
@@ -12,7 +13,7 @@ export class ListarViagemComponent implements OnInit {
   viagens:viagem[];
   usuario:Usuario;
 
-  constructor(private viagemServico:ViagemService){
+  constructor(private viagemServico:ViagemService, private router: Router){
 
    this.viagemServico.getViagensUsuario().subscribe(
       listaViagens=>{
@@ -31,6 +32,9 @@ export class ListarViagemComponent implements OnInit {
     
 
   ngOnInit() {
+  }
+  irParaAlterar(id){
+    this.router.navigate(['visita/atualizar/'+ id])
   }
   
 }

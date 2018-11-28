@@ -15,7 +15,7 @@ export class UsuarioComponent implements OnInit {
 
 
   usuario:Usuario;
-
+  // msgs: Message[] = [];
   constructor(public router : Router,private usuarioService: UsuarioService) {
      this.usuario= {nome:"", siape:null, senha:""};
      
@@ -34,4 +34,14 @@ export class UsuarioComponent implements OnInit {
 
   }
 
+
+//   show() {
+//     this.msgs.push({severity:'info', summary:'Info Message', detail:'PrimeNG rocks'});
+//     }
+
+//   hide() {
+//     this.msgs = [];
+// }
 }
+
+

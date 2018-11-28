@@ -24,13 +24,17 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     
       this.items = [
-          {label: 'Cadastrar Viagem', icon: 'fa fa-fw fa-bar-chart', routerLink: ['/visita/cadastro']},
-          {label: 'ListarViagem', icon: 'fa fa-fw fa-bar-chart',  routerLink: ['/visita/listar']},
+          {label: 'Cadastrar Viagem', routerLink: ['/visita/cadastro']},
+          {label: 'ListarViagem',  routerLink: ['/visita/listar']},
+          {label: 'sair', routerLink: ['/']},
+          // {img:, routerLink: ['/']},
+          
+          
          
         
          
       ];
-      this.activeItem = this.items[2];
+      this.activeItem = this.items[3];
     
   }
   salvar(viagem){
