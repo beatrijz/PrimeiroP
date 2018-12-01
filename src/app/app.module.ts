@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {TabMenuModule} from 'primeng/tabmenu';
+import { CadastrarCoordenadorComponent } from './cadastrar-coordenador/cadastrar-coordenador.component';
 
 //import {MessageService} from 'primeng//api';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
@@ -58,6 +59,7 @@ export const rotas : Routes = [
     ListarUsuarioComponent,
     LoginComponent,
     MenuComponent,
+    CadastrarCoordenadorComponent,
    
   
     

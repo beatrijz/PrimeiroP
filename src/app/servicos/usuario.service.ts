@@ -45,6 +45,8 @@ export class UsuarioService {
           let userDoc= this.usuarioCollection.doc(resultadoUsuario.id);
           userDoc.update({id:resultadoUsuario.id})
           console.log(usuario.nome+"usuário cadastrado!");
+          this.rotas.navigate(['/visita/listar']);
+
         });
       }else{
         console.log("usuário não cadastrado!");

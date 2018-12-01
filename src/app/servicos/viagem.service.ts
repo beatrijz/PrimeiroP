@@ -92,7 +92,7 @@ atualizarViagem(id){
   let viagem= this.angularFireStore.doc('viagem/'+id);
   console.log(id);
   viagem.update({id:id});
-  
+  console.log("atualizarViagem")
   
 }
 viagem:viagem;
@@ -108,9 +108,9 @@ atualizarTodos(id, viagem){
   professor: viagem.professor, componente: viagem.componente, conteudo: viagem.conteudo,
   cargaHoraria: viagem.cargaHoraria, turma: viagem.turma, quantidadeAlunos: viagem.quantidadeAlunos,
   hospedagem: viagem.hospedagem, endereco: viagem.endereco, servidor: viagem.servidor,
-  justificativa: viagem.justificativa, objetivo: viagem.objetivo, metodologia: viagem.metodologia, formasAprendizagem: viagem.formasAprendizagem });
-
-
+  justificativa: viagem.justificativa, objetivo: viagem.objetivo, metodologia: viagem.metodologia, formasAprendizagem: viagem.formasAprendizagem 
+   });
+   this.rotas.navigate(['/visita/visualizacao/'+id]);
 }
 
   
