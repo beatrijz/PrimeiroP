@@ -1,3 +1,20 @@
-<p>
-  cadastrar-coordenador works!
-</p>
+<p align=center><img src="marca.png"/> </p> 
+<router-outlet></router-outlet>
+<h1> Cadastro</h1>
+<b>Nome:</b>
+<br/>
+<input  [(ngModel)]= "coordenador.nome"  id ="CoodernadorNome" type="text" pInputText placeholder="digite seu nome"/>
+<br/> 
+<br/> 
+<b>Siape:</b>
+<br/>
+<input  [(ngModel)]= "coordenandor.siape"  id ="nomeSiape" type="text" pInputText placeholder="digite seu siape"/> 
+<br/> 
+<br/> 
+<b>Senha:</b>
+<br/> 
+<input  [(ngModel)]= "coodernador.senha"  id ="nomeSiape" type="text" pInputText placeholder="digite sua senha"/>
+<br/> 
+<br/> 
+<br/> 
+<button pButton type="button" label="Entrar" (click) = 'salvar()' ></button> 
