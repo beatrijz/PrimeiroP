@@ -10,6 +10,7 @@ import { viagem } from '../modelos/viagem';
 })
 export class AlterarViagemComponent implements OnInit {
   viagem;
+ linda="wanessa";
   
   id=" ";
 
@@ -19,6 +20,7 @@ export class AlterarViagemComponent implements OnInit {
     this.route.params.subscribe(params=> {this.id = params["id"];
     this.viagemServico.listarPorId(this.id).subscribe( atualizarViagem => {
       this.viagem = atualizarViagem;
+    
     }
     )});
   }

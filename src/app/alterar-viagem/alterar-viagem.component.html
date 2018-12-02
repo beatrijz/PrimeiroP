@@ -2,7 +2,7 @@
 <router-outlet></router-outlet>
 <h2>IDENTIFICAÇÃO</h2> <br/>
 <b>Empresa/Evento(*):</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.empresa" /><br/><br/> 
+<input type="text" pInputText [(ngModel)]="viagem.empresa"/> <br/><br/>
 <b>Cidade/Local:</b> <br/>
 <input type="text" pInputText [(ngModel)]="viagem.cidade"/> <br/><br/>
 <b>Roteiro:</b> <br/>
@@ -40,4 +40,6 @@
 <input type="text" pInputText [(ngModel)]="viagem.metodologia"/><br/><br/>
 <b>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</b><br/>
 <input type="text" pInputText [(ngModel)]="viagem.formasAprendizagem"/><br/><br/>
-<button pButton type="button" label="atualizar" (click) = 'atualizarViagem(viagem.id)' ></button>
+<br>
+<br>
+<button  pButton  type = " botão "  label = " atualizar "  (click) = ' atualizarViagem (viagem.id) ' > </button >

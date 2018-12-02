@@ -101,15 +101,17 @@ id;
 
 atualizarTodos(id, viagem){
   let viagemDoc=this.angularFireStore.doc('viagem/'+id);
-  console.log(viagem);
   console.log(id);
-  viagemDoc.update({empresa: viagem.empresa, cidade: viagem.cidade, roteiro: viagem.roteiro,
+  console.log("antiga"+viagem.empresa+"");
+  viagemDoc.update({empresa:viagem.empresa, cidade: viagem.cidade, roteiro: viagem.roteiro,
   data: viagem.data, horarioSaida: viagem.horarioSaida, horarioRetorno: viagem.horarioRetorno,
   professor: viagem.professor, componente: viagem.componente, conteudo: viagem.conteudo,
   cargaHoraria: viagem.cargaHoraria, turma: viagem.turma, quantidadeAlunos: viagem.quantidadeAlunos,
   hospedagem: viagem.hospedagem, endereco: viagem.endereco, servidor: viagem.servidor,
   justificativa: viagem.justificativa, objetivo: viagem.objetivo, metodologia: viagem.metodologia, formasAprendizagem: viagem.formasAprendizagem 
-   });
+     
+});
+   console.log("atualizada=>"+viagem.empresa+"" );
    this.rotas.navigate(['/visita/visualizacao/'+id]);
 }
 

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { CoordenadorService } from '../servicos/coordenador.service';
+import { Coordenador } from '../modelos/coordenador';
 
 @Component({
   selector: 'app-cadastrar-coordenador',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastrarCoordenadorComponent implements OnInit {
 
-  constructor() { }
+  coordenador:Coordenador;
+  constructor(public router:Router,private coordenadorService: CoordenadorService) {
+  this.coordenador= {nome:"", siape:null, senha:""};
+   }
 
   ngOnInit() {
+  }
+
+  salvar(){
+    this.coordenadorService.cadastrar(this.coordenador);
   }
 
 }

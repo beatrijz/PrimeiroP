@@ -25,6 +25,8 @@ import { MenuComponent } from './menu/menu.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { CadastrarCoordenadorComponent } from './cadastrar-coordenador/cadastrar-coordenador.component';
+import { CoordenadorService } from './servicos/coordenador.service';
+
 
 //import {MessageService} from 'primeng//api';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
@@ -42,6 +44,7 @@ export const rotas : Routes = [
   {path: "", component:LoginComponent},
   {path: "menu", component:MenuComponent},
   {path: "visita/atualizar/:id", component:AlterarViagemComponent},
+  {path: "coodernador/cadastro", component:CadastrarCoordenadorComponent},
 
 
 ];
@@ -60,6 +63,7 @@ export const rotas : Routes = [
     LoginComponent,
     MenuComponent,
     CadastrarCoordenadorComponent,
+   
    
   
     
@@ -90,7 +94,7 @@ export const rotas : Routes = [
     
   ],
   
-  providers: [ViagemService,AngularFirestore, UsuarioService],
+  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService],
   bootstrap: [AppComponent]
   
 })
