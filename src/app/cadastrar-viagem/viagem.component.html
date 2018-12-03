@@ -1,45 +1,47 @@
-<app-menu></app-menu>
+<app-menu> </app-menu>  
+<p align=center><img src="marca.png"/> </p>
 <router-outlet></router-outlet>
 <h2>IDENTIFICAÇÃO</h2> <br/>
 <b>Empresa/Evento(*):</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.empresa"/> <br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.empresa" pInputText placeholder="Empresa/Evento"/> <br/><br/>
 <b>Cidade/Local:</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.cidade"/> <br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.cidade" pInputText placeholder="Local"/> <br/><br/>
 <b>Roteiro:</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.roteiro"/> <br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.roteiro" pInputText placeholder="Roteiro"/> <br/><br/>
 <b>Data/Periodo</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.data"/> <br/><br/>
+<p-calendar [(ngModel)]="viagem.data" dateFormat="dd.mm.yy"></p-calendar> <br/>  <br/> 
 <b>Horario saída</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.horarioSaida"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.horarioSaida" pInputText placeholder="Saída"/><br/><br/>
 <b>Horario retorno</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.horarioRetorno"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.horarioRetorno" pInputText placeholder="Retorno"/><br/><br/>
 <b>Professor(es) Responsável (is)</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.professor"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.professor" pInputText placeholder="Professor"/><br/><br/>
 <b>Componente(s) Curricular(es)</b>  <br/>
-<input type="text" pInputText [(ngModel)]="viagem.componente"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.componente"  pInputText placeholder="Componente Curricular"/><br/><br/>
 <b>Conteúdo Programático</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.conteudo"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.conteudo"  pInputText placeholder="Conteudos da visita" /><br/><br/>
 <b>Carga Horaria</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.cargaHoraria"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.cargaHoraria"  pInputText placeholder="Carga Horária"/><br/><br/>
 <b>Turma</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.turma"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.turma"  pInputText placeholder="Turma"/><br/><br/>
 <b>Quantitativo de alunos</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.quantidadeAlunos"/><br/><br/>
+<p-spinner size="30" [(ngModel)]="viagem.quantidadeAlunos"></p-spinner>
+<br/><br/>
 <b>Hospedagem (se houver)</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.hospedagem"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.hospedagem"  pInputText placeholder="Hospedagem"/><br/><br/>
 <b>Endereço</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.endereco"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.endereco"  pInputText placeholder="Endereço"/><br/><br/>
 <b> Outros Servidores</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.servidor"/> <br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.servidor"  pInputText placeholder="Nome servidores"/> <br/><br/>
 <br>
 <b>JUSTIFICATIVA(S)</b>  <br/>
-<input type="text" pInputText [(ngModel)]="viagem.justificativa"/> <br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.justificativa" pInputText placeholder="Justificativa"/> <br/><br/>
 <b>OBJETIVO(S)</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.objetivo"/> <br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.objetivo" pInputText placeholder="Objetivos"/>  <br/><br/>
 <b>METODOLOGIA</b><br/>
-<input type="text" pInputText [(ngModel)]="viagem.metodologia"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.metodologia" pInputText placeholder="Metodologia" /><br/><br/>
 <b>FORMAS DE AVALIAÇÃO DA APRENDIZAGEM</b><br/>
-<input type="text" pInputText [(ngModel)]="viagem.formasAprendizagem"/><br/><br/>
+<input type="text" pInputText [(ngModel)]="viagem.formasAprendizagem" pInputText placeholder=" Avaliação"/>/><br/><br/>
 <br>
 <br>
 <button pButton type="button" label="Cadastrar" (click) = 'salvar()' ></button>

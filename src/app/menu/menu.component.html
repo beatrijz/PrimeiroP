@@ -1,10 +1,15 @@
-<div class="ui-g">
+<!-- <div class="ui-g">
     <div class="ui-g-8 ui-g-nopad">
      <div class="ui-g-10"><p-tabMenu [model]="items" [activeItem]="items[0]"></p-tabMenu><br /><br /><br />  </div>
     </div>
-    <!-- <div class="ui-g-1"> <input type="text" pInputText placeholder="Search">
+    <div class="ui-g-1"> <input type="text" pInputText placeholder="Search">
     </div> -->
-</div>
+<!-- </div> --> 
+
+<p-menubar [model]="items">
+    <input type="text" pInputText placeholder="Procurar">
+    <button pButton label="buscar" icon="fa fa-sign-out"></button>
+</p-menubar>
     
     
     

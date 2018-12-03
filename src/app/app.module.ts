@@ -4,7 +4,7 @@ import {ButtonModule} from 'primeng/button';
 import{FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import {InputTextModule} from 'primeng/inputtext';
-import {MenuModule, MenuItemContent} from 'primeng/menu';
+import {MenuModule} from 'primeng/menu';
 import { RouterModule, Routes } from '@angular/router';
 import {FullCalendarModule} from 'primeng/fullcalendar';
 import {AngularFireModule } from '@angular/fire';
@@ -27,9 +27,13 @@ import {TabMenuModule} from 'primeng/tabmenu';
 import { CadastrarCoordenadorComponent } from './cadastrar-coordenador/cadastrar-coordenador.component';
 import { CoordenadorService } from './servicos/coordenador.service';
 import { CadastrarSetorComponent } from './cadastrar-setor/cadastrar-setor.component';
-
-
-//import {MessageService} from 'primeng//api';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem, MessageService} from 'primeng/api';
+import {SpinnerModule} from 'primeng/spinner';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from 'primeng/toast';
+import { MessageServiceDemo } from '../message/message';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 
@@ -65,7 +69,9 @@ export const rotas : Routes = [
     LoginComponent,
     MenuComponent,
     CadastrarSetorComponent,
-    CadastrarCoordenadorComponent
+    CadastrarCoordenadorComponent,
+
+    
    
    
   
@@ -86,8 +92,14 @@ export const rotas : Routes = [
     AngularFireModule.initializeApp(configuracao),
     TableModule,
     BreadcrumbModule,
-    TabMenuModule
-    //MessageService,
+    TabMenuModule,
+    MenubarModule,
+    SpinnerModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+    ToastModule,
+    MessageServiceDemo,
+      //MessageService,
     //Message
     
     
@@ -97,7 +109,7 @@ export const rotas : Routes = [
     
   ],
   
-  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService],
+  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService,MessageService],
   bootstrap: [AppComponent]
   
 })
@@ -105,4 +117,5 @@ export const rotas : Routes = [
 export class AppModule { 
 
 }
+
 

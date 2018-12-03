@@ -3,6 +3,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import {  Usuario } from '../modelos/usuario';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 //import { MessageService } from 'primeng/api';
 
 
@@ -19,7 +20,7 @@ export class UsuarioService {
 
   
 
-  constructor(public angularFireStore:AngularFirestore,private rotas:Router,//private messageService: MessageService
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService
     ) {
     this.usuarioCollection= this.angularFireStore.collection<Usuario> ("usuario");
   }
@@ -27,7 +28,7 @@ export class UsuarioService {
   cadastrar(usuario:Usuario){
     if(usuario.senha==""){
       console.log("campo senha é obrigatóro");
-      //this.messageService.add({severity:'error', summary:'Service Message', detail:'Via MessageService'});
+      this.messageService.add({severity:'error', summary:'Service Message', detail:'Via MessageService'});
     }
     if(usuario.siape==null){
       console.log("campo siape é obrigatóro");
@@ -106,10 +107,13 @@ export class UsuarioService {
 
       if( resultado.length == 0){
         console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
+        this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
+       
       }else{
-        this.rotas.navigate(['/visita/listar'])
+        this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
         sessionStorage.setItem('id',resultado[0].id);
         console.log(resultado[0].id);
+        this.rotas.navigate(['/visita/listar'])
       }
     });
   }
