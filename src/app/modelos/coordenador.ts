@@ -1,7 +1,7 @@
 import { Usuario } from "PrimeiroP/src/app/usuario/usuario";
 export interface Coordenador{
 nome:String;
-usuario?:Usuario;
+idUsuario?:Usuario;
 senha:String;
 id?:String;
 siape:number;

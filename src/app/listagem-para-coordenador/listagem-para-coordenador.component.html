@@ -1,12 +1,11 @@
-<app-menu-usuario></app-menu-usuario>
+<app-menu-coordenador></app-menu-coordenador>
 <p align=center><img src="marca.png"/> </p>
 <p-table [value]="viagens">
   <ng-template pTemplate="header">
       <tr>
           <th>Turma</th> 
           <th>Destino</th>
-          <th>Excluir</th>
-          <th>Alterar </th>
+          <th>Visualizar</th>
 
           
       </tr>
@@ -16,8 +15,8 @@
 
           <td> <a [routerLink]="['/visita/visualizacao', viagem.id]">  {{viagem.turma}} </a> </td>
           <td> <a [routerLink]="['/visita/visualizacao', viagem.id]"> {{viagem.cidade}} </a> </td>
-          <td>  <p-button  (click)="deletar(viagem)">Deletar</p-button>  </td>
-          <td>  <p-button (click)= "irParaAlterar(viagem.id)">alterar</p-button>  </td>
+          <td>  <p-button  (click)="deletar(viagem)">Visualizar</p-button>  </td>
+         
 
       </tr>
       

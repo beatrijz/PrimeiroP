@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UsuarioService } from '../servicos/usuario.service';
 
 @Component({
   selector: 'app-alterar-usuario',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlterarUsuarioComponent implements OnInit {
 
-  constructor() { }
+  usuario;
+  id=" ";
+
+  constructor(private usuarioService:UsuarioService, private rotas:Router, private route: ActivatedRoute) {
+    this.usuario = {nome:'', senha:'', siape:null,setor:""}
+   }
 
   ngOnInit() {
+    this.route.params.subscribe(params=> {this.id = params["id"];
+    this.usuarioService.listarPorId(this.id).subscribe( atualizarUsuario => {
+      this.usuario = atualizarUsuario;
+    
+    }
+    )});
+  }
+  
+
+atualizarViagem(){
+  this.usuarioService.atualizarTodos(this.id, this.usuario);
+  console.log("atualizarViagem")
+}
+
+alterar(){
+    this.usuarioService.atualizar();
+    console.log("alterar");
   }
 
 }

@@ -3,6 +3,8 @@ import { UsuarioService } from '../servicos/usuario.service';
 import { Usuario } from '../modelos/usuario';
 import { Router } from '@angular/router';
 import {MessageService} from 'primeng/api';
+import { SetorService } from '../servicos/setor.service';
+import { Setor } from '../modelos/setor';
 
 @Component({
   selector: 'app-login',
@@ -11,9 +13,15 @@ import {MessageService} from 'primeng/api';
 })
 export class LoginComponent implements OnInit {
   private usuario:Usuario;
+  setores:Setor[];
 
-  constructor(private UsuarioService : UsuarioService, public messageService:MessageService) {
-      this.usuario = {nome:'', senha:'', siape:null}
+  constructor(private UsuarioService : UsuarioService, public messageService:MessageService,private setorService:SetorService) {
+      this.usuario = {nome:'', senha:'', siape:null,setor:""}
+      this.setorService.listarTodos().subscribe(
+        listaSetores=>{
+          this.setores = listaSetores;
+        }
+      );
    }
 
    fazerLogin(){

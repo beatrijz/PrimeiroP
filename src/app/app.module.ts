@@ -21,7 +21,6 @@ import { TableModule} from 'primeng/table';
 import { AlterarUsuarioComponent } from './alterar-usuario/alterar-usuario.component';
 import { ListarUsuarioComponent } from './listar-usuario/listar-usuario.component';
 import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { CadastrarCoordenadorComponent } from './cadastrar-coordenador/cadastrar-coordenador.component';
@@ -34,7 +33,13 @@ import {CalendarModule} from 'primeng/calendar';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToastModule} from 'primeng/toast';
 import { MessageServiceDemo } from '../message/message';
+import { ListarCoordenadorComponent } from './listar-coordenador/listar-coordenador.component';
+import { MenuCoordenadorComponent } from './menu-coordenador/menu-coordenador.component';
+import { MenuAdministradorComponent } from './menu-administrador/menu-administrador.component';
+import { MenuUsuarioComponent } from './menu-usuario/menu-usuario.component';
+import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/listagem-para-coordenador.component';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 
@@ -47,10 +52,15 @@ export const rotas : Routes = [
   {path: "usuario/listar", component:ListarUsuarioComponent},
   {path: "visita/visualizacao/:id", component:VisualizacaoViagemComponent},
   {path: "", component:LoginComponent},
-  {path: "menu", component:MenuComponent},
+  {path: "usuario/menu", component:MenuUsuarioComponent},
+  {path: "coordenador/menu", component:MenuCoordenadorComponent},
+  {path: "administrador/menu", component:MenuAdministradorComponent},
   {path: "visita/atualizar/:id", component:AlterarViagemComponent},
+  {path: "usuario/atualizar/:id", component:AlterarUsuarioComponent},
   {path: "coordenador/cadastro", component:CadastrarCoordenadorComponent},
   {path: "setor/cadastro", component:CadastrarSetorComponent},
+  {path: "coordenador/visita/listar", component:ListagemParaCoordenadorComponent}
+
 
 
 ];
@@ -67,9 +77,13 @@ export const rotas : Routes = [
     AlterarUsuarioComponent,
     ListarUsuarioComponent,
     LoginComponent,
-    MenuComponent,
     CadastrarSetorComponent,
     CadastrarCoordenadorComponent,
+    ListarCoordenadorComponent,
+    MenuCoordenadorComponent,
+    MenuAdministradorComponent,
+    MenuUsuarioComponent,
+    ListagemParaCoordenadorComponent,
 
     
    
@@ -98,7 +112,8 @@ export const rotas : Routes = [
     CalendarModule,
     BrowserAnimationsModule,
     ToastModule,
-    MessageServiceDemo,
+    DropdownModule
+    // MessageServiceDemo,
       //MessageService,
     //Message
     

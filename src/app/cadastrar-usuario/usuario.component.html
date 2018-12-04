@@ -3,19 +3,26 @@
 <h1> Cadastro</h1>
 <b>Nome:</b>
 <br/>
-<input  [(ngModel)]= "usuario.nome"  id ="nomeSiape" type="text" pInputText placeholder="digite seu nome"/>
+<input  [(ngModel)]= "usuario.nome"  id ="usuarioNome" type="text" pInputText placeholder="digite seu nome"/>
 <br/> 
 <br/> 
 <b>Siape:</b>
 <br/>
-<input  [(ngModel)]= "usuario.siape"  id ="nomeSiape" type="text" pInputText placeholder="7 dígitos"/> 
+<input  [(ngModel)]= "usuario.siape"  id ="usuarioSiape" type="text" pInputText placeholder="7 dígitos"/> 
 <br/> 
 <br/> 
 <b>Senha:</b>
 <br/> 
-<input  [(ngModel)]= "usuario.senha"  id ="nomeSiape" type="password" pInputText placeholder="ex:4321"/>
+<input  [(ngModel)]= "usuario.senha"  id ="usuarioSenha" type="password" pInputText placeholder="ex:4321"/>
 <br/> 
+<br/>
+<b>Setor:</b>
 <br/> 
+<p-dropdown [options]="setores" [(ngModel)]="setorSelecionado" optionLabel="nome"></p-dropdown>
+
+
+<br/> 
+<br/>  
 <br/> 
 <button pButton type="button" label="Entrar" (click) = 'salvar()' ></button> 
 <!-- <button pButton type="button" label="Login" (click) = 'irTelaLogin()' ></button> -->
