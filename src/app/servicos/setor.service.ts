@@ -3,11 +3,14 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Setor } from '../modelos/setor';
+import { viagem } from '../modelos/viagem';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class SetorService {
+  Viagem:viagem;
 
   setorCollection : AngularFirestoreCollection<Setor>;
 
@@ -97,6 +100,13 @@ atualizarTodos(id,setor){
       .valueChanges();
       
     }
+    
+    getViagensCoordenacao() {
+      return this.angularFireStore.collection<viagem>("viagem", ref=>  
+       ref.where ("idUsuario",'==',sessionStorage.getItem('id')))
+       .valueChanges();
+       
+     }
   
        
       
