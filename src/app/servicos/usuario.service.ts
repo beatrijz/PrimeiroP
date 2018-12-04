@@ -3,6 +3,8 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import {  Usuario } from '../modelos/usuario';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
+import { Coordenador } from '../modelos/coordenador';
 //import { MessageService } from 'primeng/api';
 
 
@@ -19,7 +21,7 @@ export class UsuarioService {
 
   
 
-  constructor(public angularFireStore:AngularFirestore,private rotas:Router,//private messageService: MessageService
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService
     ) {
     this.usuarioCollection= this.angularFireStore.collection<Usuario> ("usuario");
   }
@@ -27,10 +29,13 @@ export class UsuarioService {
   cadastrar(usuario:Usuario){
     if(usuario.senha==""){
       console.log("campo senha é obrigatóro");
-      //this.messageService.add({severity:'error', summary:'Service Message', detail:'Via MessageService'});
+      this.messageService.add({severity:'error', summary:'Service Message', detail:'Via MessageService'});
     }
     if(usuario.siape==null){
       console.log("campo siape é obrigatóro");
+    }
+    if(usuario.siape==null){
+      console.log("campo setor é obrigatóro");
     }
     if(usuario.nome==""){
       console.log("campo nome é obrigatóro");
@@ -43,13 +48,13 @@ export class UsuarioService {
       if( resultado.length == 0){
         this.usuarioCollection.add(usuario).then(resultadoUsuario =>{
           let userDoc= this.usuarioCollection.doc(resultadoUsuario.id);
-          userDoc.update({id:resultadoUsuario.id})
+          userDoc.update({id:resultadoUsuario.id});
           console.log(usuario.nome+"usuário cadastrado!");
           this.rotas.navigate(['/visita/listar']);
 
         });
       }else{
-        console.log("usuário não cadastrado!");
+        console.log("usuário já está cadastrado!");
       }
     });
    }
@@ -77,9 +82,9 @@ export class UsuarioService {
 
   }
 
-  listarPorId(usuarioId) {
+  listarPorId(usuario) {
     return new Observable(observer => {
-      let doc = this.usuarioCollection.doc(usuarioId);
+      let doc = this.usuarioCollection.doc(usuario);
       doc.snapshotChanges().subscribe(result => {
         let id = result.payload.id;
         let data = result.payload.data()
@@ -94,7 +99,7 @@ export class UsuarioService {
     return this.usuarioCollection.doc(usuario).delete();
     
   }
-
+ 
   
 
   fazerLogin(usuario:Usuario){
@@ -105,14 +110,63 @@ export class UsuarioService {
     console.log(resultado);
 
       if( resultado.length == 0){
-        console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
+        this.fazerLoginCoordenador(usuario);
+        // console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
+        // this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
+
       }else{
-        this.rotas.navigate(['/visita/listar'])
+        this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
         sessionStorage.setItem('id',resultado[0].id);
         console.log(resultado[0].id);
+        this.rotas.navigate(['/usuario/menu'])
       }
     });
+    
   }
+
+
+  fazerLoginCoordenador(usuario:Usuario){
+    this.angularFireStore.collection<Coordenador>("coordenador", ref=>
+    ref.where("siape",'==',usuario.siape)
+    .where("senha", "==", usuario.senha) )
+    .valueChanges().subscribe(resultadoCoordenador=>{
+    console.log(resultadoCoordenador);
+
+      if( resultadoCoordenador.length == 0){
+        this.fazerLoginAdministrador(usuario);
+        // console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
+        // this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
+
+      }else{
+        this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
+        // sessionStorage.setItem('id',resultadoCoordenador[0].id);
+        console.log(resultadoCoordenador[0].id);
+        this.rotas.navigate(['/coordenador/menu'])
+      }
+    });
+    
+  }
+
+
+
+  fazerLoginAdministrador(usuario:Usuario){
+    if(usuario.senha=="1234567" && usuario.siape==1234567){
+      this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
+      this.rotas.navigate(['/administrador/menu']);
+    }
+
+      else{
+        this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
+        
+      }
+    
+  }
+  
+
+
+  
+
+  
 
 
   irTelaLogin(){
@@ -124,5 +178,35 @@ export class UsuarioService {
     console.log("vai");
   }
 
+
+
+  atualizarViagem(id){
+    let viagem= this.angularFireStore.doc('viagem/'+id);
+    console.log(id);
+    viagem.update({id:id});
+    console.log("atualizarViagem")
+    
+  }
+  usuario:Usuario;
+  id;
+  
+  
+  atualizarTodos(id, usuario){
+    let usuarioDoc=this.angularFireStore.doc('usuario/'+id);
+    console.log(id);
+    console.log("antiga"+usuario.siape+"");
+    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome
+       
+  });
+     console.log("atualizada=>"+usuario.senha+"" );
+     this.rotas.navigate(['/'+id]);
+  }
+  
+   atualizar(){
+    this.rotas.navigate(['/usuario/cadastro']);
+
+
+
+  }
   
 }

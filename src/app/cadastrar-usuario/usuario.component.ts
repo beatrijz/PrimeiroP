@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../servicos/usuario.service';
 import { Usuario } from '../modelos/usuario';
+import {SelectItem} from 'primeng/api';
+import { SetorService } from '../servicos/setor.service';
+import { Setor } from '../modelos/setor';
 
 
 
@@ -12,13 +15,21 @@ import { Usuario } from '../modelos/usuario';
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
-
-
+  
+  setores:Setor[];
   usuario:Usuario;
-  // msgs: Message[] = [];
-  constructor(public router : Router,private usuarioService: UsuarioService) {
-     this.usuario= {nome:"", siape:null, senha:""};
+  setorSelecionado;
+  constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService) {
+     this.usuario= {nome:"", siape:null, senha:"",setor:""};
+      
+     this.setorService.listarTodos().subscribe(
+      listaSetores=>{
+        this.setores = listaSetores;
+        // this.setor=this.setores.setor;
+      }
+    );
      
+    console.log(this.usuario.setor)
   }
 
   ngOnInit() {
@@ -31,6 +42,9 @@ export class UsuarioComponent implements OnInit {
 
   salvar(){
     this.usuarioService.cadastrar(this.usuario);
+    console.log(this.setorSelecionado.nome);
+    this.usuario.setor=this.setorSelecionado.nome;
+    
 
   }
 

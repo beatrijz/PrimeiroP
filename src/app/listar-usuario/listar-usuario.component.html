@@ -1,4 +1,4 @@
-<app-menu></app-menu>
+
 <p-table [value]="usuario">
   <ng-template pTemplate="header">
       <tr>
@@ -6,6 +6,7 @@
           <th> id  </th>
           <th> nome </th>
           <th> siape </th>
+          <th> setor </th>
           <th> senha </th>
           <th>excluir este usuario</th>
          
@@ -17,6 +18,7 @@
           <td> <a [routerLink]="['/usuario/listar', usuario.id]">  {{ usuario.id }} </a> </td>
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.nome}} </a> </td>
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.siape}} </a> </td>
+          <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.setor}} </a> </td>
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.senha}} </a> </td>
 
          

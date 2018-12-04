@@ -1,4 +1,4 @@
 export interface Setor{
     nome:String;
-    id:String;
+    id?:String;
 }

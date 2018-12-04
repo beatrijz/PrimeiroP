@@ -4,8 +4,9 @@ import {ButtonModule} from 'primeng/button';
 import{FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import {InputTextModule} from 'primeng/inputtext';
-import {MenuModule, MenuItemContent} from 'primeng/menu';
+import {MenuModule} from 'primeng/menu';
 import { RouterModule, Routes } from '@angular/router';
+
 import {FullCalendarModule} from 'primeng/fullcalendar';
 import {AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -21,7 +22,6 @@ import { TableModule} from 'primeng/table';
 import { AlterarUsuarioComponent } from './alterar-usuario/alterar-usuario.component';
 import { ListarUsuarioComponent } from './listar-usuario/listar-usuario.component';
 import { LoginComponent } from './login/login.component';
-import { MenuComponent } from './menu/menu.component';
 import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { CadastrarCoordenadorComponent } from './cadastrar-coordenador/cadastrar-coordenador.component';
@@ -33,7 +33,21 @@ import { MenuAdmComponent } from './menu-adm/menu-adm.component';
 
 
 //import {MessageService} from 'primeng//api';
+import { CadastrarSetorComponent } from './cadastrar-setor/cadastrar-setor.component';
+import {MenubarModule} from 'primeng/menubar';
+import {MenuItem, MessageService} from 'primeng/api';
+import {SpinnerModule} from 'primeng/spinner';
+import {CalendarModule} from 'primeng/calendar';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ToastModule} from 'primeng/toast';
+import { MessageServiceDemo } from '../message/message';
+import { ListarCoordenadorComponent } from './listar-coordenador/listar-coordenador.component';
+import { MenuCoordenadorComponent } from './menu-coordenador/menu-coordenador.component';
+import { MenuAdministradorComponent } from './menu-administrador/menu-administrador.component';
+import { MenuUsuarioComponent } from './menu-usuario/menu-usuario.component';
+import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/listagem-para-coordenador.component';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 
@@ -46,10 +60,15 @@ export const rotas : Routes = [
   {path: "usuario/listar", component:ListarUsuarioComponent},
   {path: "visita/visualizacao/:id", component:VisualizacaoViagemComponent},
   {path: "", component:LoginComponent},
-  {path: "menu", component:MenuComponent},
+  {path: "usuario/menu", component:MenuUsuarioComponent},
+  {path: "coordenador/menu", component:MenuCoordenadorComponent},
+  {path: "administrador/menu", component:MenuAdministradorComponent},
   {path: "visita/atualizar/:id", component:AlterarViagemComponent},
-  {path: "coodernador/cadastro", component:CadastrarCoordenadorComponent},
-  {path: "usuario/administrador", component:CadastroAdministradorComponent},
+  {path: "usuario/atualizar/:id", component:AlterarUsuarioComponent},
+  {path: "coordenador/cadastro", component:CadastrarCoordenadorComponent},
+  {path: "setor/cadastro", component:CadastrarSetorComponent},
+  {path: "coordenador/visita/listar", component:ListagemParaCoordenadorComponent}
+
 
 
 ];
@@ -66,11 +85,18 @@ export const rotas : Routes = [
     AlterarUsuarioComponent,
     ListarUsuarioComponent,
     LoginComponent,
-    MenuComponent,
+    CadastrarSetorComponent,
     CadastrarCoordenadorComponent,
     CadastroAdministradorComponent,
     LoginAdministradorComponent,
     MenuAdmComponent,
+    ListarCoordenadorComponent,
+    MenuCoordenadorComponent,
+    MenuAdministradorComponent,
+    MenuUsuarioComponent,
+    ListagemParaCoordenadorComponent,
+
+    
    
    
   
@@ -91,8 +117,15 @@ export const rotas : Routes = [
     AngularFireModule.initializeApp(configuracao),
     TableModule,
     BreadcrumbModule,
-    TabMenuModule
-    //MessageService,
+    TabMenuModule,
+    MenubarModule,
+    SpinnerModule,
+    CalendarModule,
+    BrowserAnimationsModule,
+    ToastModule,
+    DropdownModule
+    // MessageServiceDemo,
+      //MessageService,
     //Message
     
     
@@ -102,7 +135,7 @@ export const rotas : Routes = [
     
   ],
   
-  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService],
+  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService,MessageService],
   bootstrap: [AppComponent]
   
 })
@@ -110,4 +143,5 @@ export const rotas : Routes = [
 export class AppModule { 
 
 }
+
 

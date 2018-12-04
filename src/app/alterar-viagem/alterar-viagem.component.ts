@@ -10,15 +10,16 @@ import { viagem } from '../modelos/viagem';
 })
 export class AlterarViagemComponent implements OnInit {
   viagem;
- linda="wanessa";
-  
   id=" ";
 
-  constructor(private ViagemService:ViagemService, private rotas:Router, public viagemServico: ViagemService, private route: ActivatedRoute) { }
+  constructor(private viagemService:ViagemService, private rotas:Router, private route: ActivatedRoute) {
+    this.viagem= {cidade:'',roteiro:'',empresa:'',data:'',horarioSaida:"",horarioRetorno:"",professor:"",componente:"",conteudo:"",cargaHoraria:null,turma:"",hospedagem:'',endereco:"",servidor:"",justificativa:"",objetivo:"",metodologia:"",formasAprendizagem:"",quantidadeAlunos:null,idUsuario:sessionStorage.getItem('id')};
+
+   }
 
   ngOnInit() {
     this.route.params.subscribe(params=> {this.id = params["id"];
-    this.viagemServico.listarPorId(this.id).subscribe( atualizarViagem => {
+    this.viagemService.listarPorId(this.id).subscribe( atualizarViagem => {
       this.viagem = atualizarViagem;
     
     }
@@ -27,12 +28,12 @@ export class AlterarViagemComponent implements OnInit {
   
 
 atualizarViagem(){
-  this.viagemServico.atualizarTodos(this.id, this.viagem);
+  this.viagemService.atualizarTodos(this.id, this.viagem);
   console.log("atualizarViagem")
 }
 
 alterar(){
-    this.ViagemService.atualizar();
+    this.viagemService.atualizar();
     console.log("alterar");
   }
 

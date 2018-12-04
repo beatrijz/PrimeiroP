@@ -1,0 +1,10 @@
+<p align=center><img src="marca.png"/> </p> 
+<router-outlet></router-outlet>
+<h2> Cadastro de setores:</h2>
+<b>Nome:</b>
+<br/>
+<input  [(ngModel)]= "setor.nome"  id ="nomeSiape" type="text" pInputText placeholder="digite o nome setor"/>
+<br/> 
+<br/> 
+<br/> 
+<button pButton type="button" label="cadastrar Setor" (click) = 'salvar()' ></button>
