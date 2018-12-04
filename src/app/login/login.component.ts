@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   setores:Setor[];
 
   constructor(private UsuarioService : UsuarioService, public messageService:MessageService,private setorService:SetorService) {
-      this.usuario = {nome:'', senha:'', siape:null,setor:""}
+      this.usuario = {nome:'', senha:'', siape:null,idSetor:""}
       this.setorService.listarTodos().subscribe(
         listaSetores=>{
           this.setores = listaSetores;

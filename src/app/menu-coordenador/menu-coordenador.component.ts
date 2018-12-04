@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { UsuarioService } from '../servicos/usuario.service';
 
 @Component({
   selector: 'app-menu-coordenador',
@@ -8,7 +9,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuCoordenadorComponent implements OnInit {
 
-  constructor() { }
+  constructor(public usuarioService:UsuarioService) { }
   items: MenuItem[];
   activeItem: MenuItem;
 
@@ -35,6 +36,11 @@ export class MenuCoordenadorComponent implements OnInit {
           label: 'sair', icon: 'pi pi-fw pi-times'
       }
   ];
+  }
+
+
+  sairSistema(){
+    this.usuarioService
   }
   }
 

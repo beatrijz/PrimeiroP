@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Coordenador } from '../modelos/coordenador';
+import { SetorService } from './setor.service';
 //import { MessageService } from 'primeng/api';
 
 
@@ -21,7 +22,7 @@ export class UsuarioService {
 
   
 
-  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService, public setorService: SetorService
     ) {
     this.usuarioCollection= this.angularFireStore.collection<Usuario> ("usuario");
   }
@@ -103,6 +104,7 @@ export class UsuarioService {
   
 
   fazerLogin(usuario:Usuario){
+    ehCoordenador:Boolean;
     this.angularFireStore.collection<Usuario>("usuario", ref=>
     ref.where("siape",'==',usuario.siape)
     .where("senha", "==", usuario.senha) )
@@ -112,16 +114,27 @@ export class UsuarioService {
 
       if( resultado.length > 0){
         // verificar se ele é coordenador
-        // boolean eCoordenador
-        // this.setorService.listarTodos().subscribe(setores=>{
+         
+         this.setorService.listarTodos().subscribe(setores=>{
+           for(let i = 0; i < setores.length; i++){
+             if(setores[i].idUsuario == usuario.id){
+
+             }
+           }
+           //usuario.id == 
+     
+
+          
+           
+           
           // percorrer todos os setores, verificar se o idusiario de setor é igual ao id do usuário logado.
           // se algum dos setores tiver, ele é coordenador
           // se n , ele não é coordenador
-      //   })
-      }
-
-      if( resultado.length == 0){
+         });
       
+    
+      if( resultado.length == 0){
+      }
       }else{
         this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
         sessionStorage.setItem('id',resultado[0].id);
@@ -131,7 +144,7 @@ export class UsuarioService {
     });
     
   }
-
+  
   
     Sair(){
       sessionStorage.removeItem('id');

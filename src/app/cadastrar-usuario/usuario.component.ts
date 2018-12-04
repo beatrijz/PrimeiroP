@@ -20,7 +20,7 @@ export class UsuarioComponent implements OnInit {
   usuario:Usuario;
   setorSelecionado;
   constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService) {
-     this.usuario= {nome:"", siape:null, senha:"",setor:""};
+     this.usuario= {nome:"",siape:null, senha:"",idSetor:""};
       
      this.setorService.listarTodos().subscribe(
       listaSetores=>{
@@ -29,7 +29,7 @@ export class UsuarioComponent implements OnInit {
       }
     );
      
-    console.log(this.usuario.setor)
+    console.log(this.usuario.idSetor)
   }
 
   ngOnInit() {
@@ -43,7 +43,7 @@ export class UsuarioComponent implements OnInit {
   salvar(){
     this.usuarioService.cadastrar(this.usuario);
     console.log(this.setorSelecionado.nome);
-    this.usuario.setor=this.setorSelecionado.nome;
+    this.usuario.idSetor=this.setorSelecionado.nome;
     
 
   }
