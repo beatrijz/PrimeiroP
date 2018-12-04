@@ -1,4 +1,5 @@
-import { Usuario } from "PrimeiroP/src/app/usuario/usuario";
+import { Usuario } from "./usuario";
+
 export interface Coordenador{
 nome:String;
 usuario?:Usuario;

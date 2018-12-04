@@ -1,0 +1,24 @@
+<p align=center><img src="marca.png"/> </p> 
+<router-outlet></router-outlet>
+<h1> Cadastro</h1>
+<b>Nome:</b>
+<br/>
+<input  [(ngModel)]= "administrador.nome"  id ="nomeSiape" type="text" pInputText placeholder="digite seu nome"/>
+<br/> 
+<br/> 
+<b>Siape:</b>
+<br/>
+<input  [(ngModel)]= "administrador.siape"  id ="nomeSiape" type="text" pInputText placeholder="digite seu siape"/> 
+<br/> 
+<br/> 
+<b>Senha:</b>
+<br/> 
+<input  [(ngModel)]= "administrador.senha"  id ="nomeSiape" type="text" pInputText placeholder="digite sua senha"/>
+<br/> 
+<br/> 
+<br/> 
+<button pButton type="button" label="Entrar" (click) = 'salvar()' ></button> 
+
+
+
+
