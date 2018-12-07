@@ -37,8 +37,9 @@ export class UsuarioComponent implements OnInit {
 
   salvar(){
     this.usuarioService.cadastrar(this.usuario);
-    console.log(this.setorSelecionado.nome);
-    this.usuario.idSetor=this.setorSelecionado.nome;
+    console.log("o nome do setor era pra está aqui"+this.setorSelecionado.nome);
+    console.log("o id so setor era pra está aqui"+this.setorSelecionado.id);
+    this.usuario.idSetor=this.setorSelecionado.id;
     
 
   }

@@ -14,26 +14,7 @@ export class MenuAdministradorComponent implements OnInit {
   ngOnInit() {
     this.items = [
       {
-          label: 'Administrador',
-          icon: 'pi pi-fw pi-cog',
-          items: [{
-                  label: 'editar',  
-                  icon: 'pi pi-fw pi-plus',
-                  items: [
-                      {label: 'Alterar Dados'},
-                      {label: 'Deletar'},
-                      {label: 'Visualizar'},
-
-                  ]
-              },
-             
-              {separator:true},
-              {label: 'sair'}
-          ]
-      },
-     
-      {
-          label: 'Usuario',
+          label: 'Usuário',
           icon: 'pi pi-fw pi-cog',
           items: [
               {label: 'Cadastrar', icon: 'pi pi-fw pi-trash',routerLink: ['/usuario/cadastro']},
@@ -43,17 +24,6 @@ export class MenuAdministradorComponent implements OnInit {
               {label: 'Deletar', icon: 'pi pi-fw pi-refresh'}
           ]
       },
-      {
-        label: 'Coordenação',
-        icon: 'pi pi-fw pi-cog',
-        items: [
-            {label: 'Cadastrar', icon: 'pi pi-fw pi-trash',routerLink: ['/coordenacao/cadastro']},
-            {label: 'Buscar', icon: 'pi pi-fw pi-refresh'},
-            {label: 'Alterar', icon: 'pi pi-fw pi-refresh'},
-            {label: 'listar', icon: 'pi pi-fw pi-refresh'},
-            {label: 'Deletar', icon: 'pi pi-fw pi-refresh'}
-        ]
-    },
     {
       label: 'Setor',
       icon: 'pi pi-fw pi-cog',

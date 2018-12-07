@@ -46,16 +46,18 @@ export class UsuarioService {
       ref.where("siape",'==',usuario.siape))
       .valueChanges().subscribe(resultado=>{ 
 
-      if( resultado.length == 0){
+      if(resultado.length == 0){
         this.usuarioCollection.add(usuario).then(resultadoUsuario =>{
           let userDoc= this.usuarioCollection.doc(resultadoUsuario.id);
           userDoc.update({id:resultadoUsuario.id});
-          console.log(usuario.nome+"usuário cadastrado!");
+          console.log(usuario.nome+" cadastrado!");
           this.rotas.navigate(['/visita/listar']);
 
         });
-      }else{
-        console.log("usuário já está cadastrado!");
+      }else if(resultado.length==1){
+        console.log(usuario.nome+" já existente!");
+        this.messageService.add({severity:'error', summary:'Service Message', detail: usuario.nome+" já existente!"});
+        
       }
     });
    }
@@ -103,52 +105,57 @@ export class UsuarioService {
  
   
 
+  
   fazerLogin(usuario:Usuario){
-    ehCoordenador:Boolean;
     this.angularFireStore.collection<Usuario>("usuario", ref=>
     ref.where("siape",'==',usuario.siape)
     .where("senha", "==", usuario.senha) )
     .valueChanges().subscribe(resultado=>{
-    console.log(resultado);
-
-
-      if( resultado.length > 0){
-        // verificar se ele é coordenador
-         
-         this.setorService.listarTodos().subscribe(setores=>{
-           for(let i = 0; i < setores.length; i++){
-             if(setores[i].idUsuario == usuario.id){
-
-             }
-           }
-           //usuario.id == 
-     
-
-          
-           
-           
-          // percorrer todos os setores, verificar se o idusiario de setor é igual ao id do usuário logado.
-          // se algum dos setores tiver, ele é coordenador
-          // se n , ele não é coordenador
-         });
       
-    
-      if( resultado.length == 0){
+
+      if(resultado.length>0){
+        usuario.id=resultado[0].id;
+        this.setorService.listarTodos().subscribe(setores=>{
+          for(let i =0;i<setores.length; i++){
+            if(setores[i].idUsuario == usuario.id){
+             usuario.ehCoordenador = true;
+              if(usuario.ehCoordenador==true){
+                sessionStorage.setItem('id',resultado[0].id);
+                this.rotas.navigate(['/coordenador/menu']);
+                this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
+         
+              }
+            }
+            else{
+              usuario.id=resultado[0].id;
+              sessionStorage.setItem('id',resultado[0].id);
+              this.rotas.navigate(['/visita/listar']);
+              this.messageService.add({severity:'success', summary:'Parabéns', detail:'login realizado com sucesso!'});
+            }
+          } 
+        });
       }
-      }else{
-        this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
-        sessionStorage.setItem('id',resultado[0].id);
-        console.log(resultado[0].id);
-        this.rotas.navigate(['/usuario/menu'])
+      
+      else if(usuario.senha=="1234567"&& usuario.senha=="1234567"){
+        this.rotas.navigate(['/administrador/menu']);
+
       }
-    });
+      
+      else {
+        this.messageService.add({severity:'error', summary:'erro de Autenticação', detail:'O usuário não existe!'});
+      };
+    });  
+  }   
     
+
+    
+  
+  
+  
+  Sair(){
+    sessionStorage.removeItem('id');
+    this.irTelaLogin();
   }
-  
-  
-    Sair(){
-      sessionStorage.removeItem('id');
-    }
   
 
 
@@ -158,36 +165,24 @@ export class UsuarioService {
 
   irTelaCadastro(){
     this.rotas.navigate(['/usuario/cadastro']);
-    console.log("vai");
   }
 
 
 
   atualizarViagem(id){
     let viagem= this.angularFireStore.doc('viagem/'+id);
-    console.log(id);
     viagem.update({id:id});
-    console.log("atualizarViagem")
+    
     
   }
-  usuario:Usuario;
-  id;
-  
   
   atualizarTodos(id, usuario){
     let usuarioDoc=this.angularFireStore.doc('usuario/'+id);
-    console.log(id);
-    console.log("antiga"+usuario.siape+"");
-    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome
-       
-  });
-     console.log("atualizada=>"+usuario.senha+"" );
-     this.rotas.navigate(['/'+id]);
+    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome});
+    this.listarTodos();
+   
+    
   }
   
-   atualizar(){
-    this.rotas.navigate(['/usuario/cadastro']);
-
-  }
   
 }
