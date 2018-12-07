@@ -19,13 +19,22 @@ export class UsuarioComponent implements OnInit {
   setores:Setor[];
   usuario:Usuario;
   setorSelecionado;
+
+  opcoes:String[];
   constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService) {
-     this.usuario= {nome:"",siape:null, senha:"",idSetor:""};
-      
+     this.usuario= {nome:"",siape:null, senha:"",idSetor:"",ehCoordenador:false};
+
      this.setorService.listarTodos().subscribe(
       listaSetores=>{
         this.setores = listaSetores;
         // this.setor=this.setores.setor;
+
+        // this.opcoes = [
+        //   {label:'Escolha opcão', value:null},
+        //   {label:'sim', value:{id:1, name: 'New York', code: 'NY'}},
+        //   {label:'não', value:{id:2, name: 'New York', code: 'NY'}}
+        // ];
+
       }
     );
      
@@ -42,8 +51,9 @@ export class UsuarioComponent implements OnInit {
 
   salvar(){
     this.usuarioService.cadastrar(this.usuario);
-    console.log(this.setorSelecionado.nome);
-    this.usuario.idSetor=this.setorSelecionado.nome;
+    console.log("o nome do setor era pra está aqui"+this.setorSelecionado.nome);
+    console.log("o id so setor era pra está aqui"+this.setorSelecionado.id);
+    this.usuario.idSetor=this.setorSelecionado.id;
     
 
   }

@@ -3,6 +3,7 @@ export interface Usuario{
     siape:number;
     senha: string;
     id?: string;
-    idSetor:string;
+    idSetor?:string;
+    ehCoordenador?:boolean;
     
 }

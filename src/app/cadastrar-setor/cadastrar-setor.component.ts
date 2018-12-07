@@ -17,26 +17,44 @@ export class CadastrarSetorComponent implements OnInit {
   setor:Setor
   usuarioSelecionado;
   // msgs: Message[] = [];
+
+  user: Usuario;
+  users: Usuario[];
   constructor(public router : Router,private setorService: SetorService,private usuarioService: UsuarioService) {
      this.usuario= {nome:"",id:"",senha:"senha",siape:null};
-      this.setor= {nome:"",id:"",idUsuario:""};
+
+      this.setor= {nome:null,id:"",idUsuario:""};
+
      this.usuarioService.listarTodos().subscribe(
       listaUsuarios=>{
         this.usuarios = listaUsuarios;
-        // this.setor=this.setores.setor;
+        
       }
     );
-     
-    console.log(this.usuario.nome)
+  
   }
      
   
   ngOnInit() {
+    this.usuarioService.listarTodos().subscribe(resultado => {
+      this.users = resultado;
+    })
   }
   
 
   salvar(){
-    this.setorService.cadastrar(this.setor);
-
+    console.log(this.usuarioSelecionado);
+    //console.log(this.usuarioSelecionado.nome);
+    //console.log(this.usuarioSelecionado.id);
+    //this.setor.idUsuario= this.usuarioSelecionado.id
+    //this.setorService.cadastrar(this.setor);
+    
+    // if(this.usuarioSelecionado.id!= null){
+    //   console.log("id do usuario "+this.usuarioSelecionado.id);
+    //   console.log(this.usuarioSelecionado.nome);
+    //   console.log(this.setor.idUsuario);
+    // }
   }
+
+
 }

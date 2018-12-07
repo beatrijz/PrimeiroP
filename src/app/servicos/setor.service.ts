@@ -3,6 +3,9 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Setor } from '../modelos/setor';
+import { MessageService } from 'primeng/api';
+import { viagem } from 'PrimeiroP/src/app/viagem/viagem';
+import { Usuario } from 'PrimeiroP/src/app/usuario/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +14,40 @@ export class SetorService {
 
   setorCollection : AngularFirestoreCollection<Setor>;
 
-  constructor(public angularFireStore:AngularFirestore,private rotas:Router) {
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService) {
     this.setorCollection= this.angularFireStore.collection<Setor> ("setor");
+
    }
-  //  salvar(viagem: viagem){
-  //   this.viagemCollection.add(viagem).then(resultado => {
-  //     viagem.id = resultado.id;
-  //     console.log("cadastrado");
-  //  });
-  // }
+  
 
   cadastrar(setor:Setor){
-    if(setor.nome=="")
-    {console.log("o nome do setor é obrigatório");}
-   
+    if(setor.nome==null){
+      this.messageService.add({severity:'error', summary:'Message', detail:'o nome do setor é obrigatório!'});
+      console.log("o nome do setor é obrigatório! "+setor.nome);
+    }
     else{
-    this.setorCollection.add(setor).then(resultado =>{
-    let userDoc= this.setorCollection.doc(resultado.id);
-    userDoc.update({id:resultado.id})
-    this.rotas.navigate(['/visita/listar']);
-    // console.log("setor de id"+setor.id); setor n definido
-    // console.log("setor de id"+setor.nome);
-    
+      console.log(setor);
+      this.angularFireStore.collection<Setor>("setor", ref=>
+      ref.where("nome",'==',setor.nome)).valueChanges().subscribe(setorCadastrado=>{
+      if(setorCadastrado.length==0){
+        console.log("setooor")
+        console.log(setor.idUsuario)
+        this.setorCollection.add(setor).then(setores =>{
+          let userDoc= this.setorCollection.doc(setores.id);
+          userDoc.update({id:setores.id})
+          this.messageService.add({severity:'success', summary:'Message', detail:'setor cadastrado!'});
+          
+        });
+      }
 
-    });}
+      if(setorCadastrado.length>0){
+        this.messageService.add({severity:'error', summary:'Message', detail:'setor já estava cadastrado!'});
+        console.log("o setor já está cadastrado "+setor.nome);
+        console.log(setorCadastrado.length);
+      }
+     
+     });
+    }
   }
 
   listarTodos(): Observable<any[]> {
@@ -110,10 +123,14 @@ atualizarTodos(id,setor){
   }  
   atualizar(){
     this.rotas.navigate(['/setor/cadastro']);
-
-
-
   }
+
+  getViagensUsuarioMesmoSetor(usuario) {
+    return this.angularFireStore.collection<Usuario>("usuario", ref=>  
+     ref.where ("idSetor",'==',usuario.idSetor))
+     .valueChanges();
+     
+   }
   
 
   

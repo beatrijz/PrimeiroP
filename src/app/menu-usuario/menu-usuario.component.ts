@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { viagem } from '../modelos/viagem';
 import { ViagemService } from '../servicos/viagem.service';
+import { UsuarioService } from '../servicos/usuario.service';
 
 @Component({
   selector: 'app-menu-usuario',
@@ -10,12 +11,16 @@ import { ViagemService } from '../servicos/viagem.service';
 })
 export class MenuUsuarioComponent implements OnInit {
 
-  constructor(private viagemService: ViagemService) { }
+  constructor(private viagemService: ViagemService,private usuarioService:UsuarioService) { }
   items: MenuItem[];
 
   activeItem: MenuItem;
   viagem: viagem;
+//   usuario:Usuario;
 
+  sair(){
+    this.usuarioService.Sair();
+  }
   
       ngOnInit() {
         this.items = [
@@ -26,7 +31,7 @@ export class MenuUsuarioComponent implements OnInit {
                         label: 'editar',  
                         icon: 'pi pi-fw pi-plus',
                         items: [
-                            {label: 'Alterar Dados',routerLink: ["/usuario/atualizar/:id"]},
+                             {label: 'Alterar Dados',routerLink: ["/usuario/atualizar/", sessionStorage.getItem('id')]}
                         ]
                     },
                    
@@ -45,7 +50,9 @@ export class MenuUsuarioComponent implements OnInit {
             },
             
             {
-                label: 'sair', icon: 'pi pi-fw pi-times'
+                label: 'sair', icon: 'pi pi-fw pi-times',routerLink: ['/'],command:(event) => {
+                    this.sair();
+                }
             }
         ];
     }
@@ -53,6 +60,8 @@ export class MenuUsuarioComponent implements OnInit {
   salvar(viagem){
     this.viagemService.salvar(viagem);
   }
+
+  
 }
         
       

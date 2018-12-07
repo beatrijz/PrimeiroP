@@ -40,6 +40,7 @@ import { MenuUsuarioComponent } from './menu-usuario/menu-usuario.component';
 import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/listagem-para-coordenador.component';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import {DropdownModule} from 'primeng/dropdown';
+import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usuario.component';
 
 
 
@@ -84,6 +85,7 @@ export const rotas : Routes = [
     MenuAdministradorComponent,
     MenuUsuarioComponent,
     ListagemParaCoordenadorComponent,
+    VisualizarUsuarioComponent,
 
     
    

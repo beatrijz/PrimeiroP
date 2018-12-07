@@ -25,7 +25,6 @@ export class VisualizacaoViagemComponent implements OnInit {
       this.viagemS.listarPorId(this.id).subscribe(resultado => {
       this.viagemResultado= resultado
       this.viagensTecnicas.push(this.viagemResultado);
-
       console.log("esse é o id"+this.id);
       
       });

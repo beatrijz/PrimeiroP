@@ -13,7 +13,7 @@ export class AlterarUsuarioComponent implements OnInit {
   id=" ";
 
   constructor(private usuarioService:UsuarioService, private rotas:Router, private route: ActivatedRoute) {
-    this.usuario = {nome:'', senha:'', siape:null,setor:""}
+    this.usuario = {nome:'', senha:'', siape:null,idSetor:"",ehCoordenador:false}
    }
 
   ngOnInit() {
@@ -26,14 +26,10 @@ export class AlterarUsuarioComponent implements OnInit {
   }
   
 
-atualizarViagem(){
+atualizarUsuario(){
   this.usuarioService.atualizarTodos(this.id, this.usuario);
-  console.log("atualizarViagem")
 }
 
-alterar(){
-    this.usuarioService.atualizar();
-    console.log("alterar");
-  }
+
 
 }
