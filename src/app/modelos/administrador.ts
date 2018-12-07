@@ -1,8 +1,8 @@
 
-export interface administrador{
+export class administrador{
 nome: String;
-senha: "007";
-siape: "0000000";
+senha: string;
+siape: string;
 idAdministrador?:String;
 id?:string;
 }

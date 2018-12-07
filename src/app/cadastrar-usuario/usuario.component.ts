@@ -5,6 +5,7 @@ import { Usuario } from '../modelos/usuario';
 import {SelectItem} from 'primeng/api';
 import { SetorService } from '../servicos/setor.service';
 import { Setor } from '../modelos/setor';
+import { ViagemService } from '../servicos/viagem.service';
 
 
 
@@ -17,23 +18,17 @@ import { Setor } from '../modelos/setor';
 export class UsuarioComponent implements OnInit {
   
   setores:Setor[];
+  usuarios: Usuario[];
   usuario:Usuario;
   setorSelecionado;
-  constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService) {
-     this.usuario= {nome:"", siape:null, senha:"",idSetor:""};
-      
-     this.setorService.listarTodos().subscribe(
-      listaSetores=>{
-        this.setores = listaSetores;
-        // this.setor=this.setores.setor;
-      }
-    );
-     
+
+  constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService, private viagemService: ViagemService) {
     console.log(this.usuario.idSetor);
   }
 
   ngOnInit() {
   }
+  
   
 
   irTelaLogin(){
@@ -43,7 +38,7 @@ export class UsuarioComponent implements OnInit {
   salvar(){
     this.usuarioService.cadastrar(this.usuario);
     console.log(this.setorSelecionado.nome);
-    this.usuario.setor=this.setorSelecionado.nome;
+    this.usuario.idSetor=this.setorSelecionado.nome;
     
 
   }

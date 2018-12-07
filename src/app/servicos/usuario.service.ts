@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Coordenador } from '../modelos/coordenador';
+import { SetorService } from './setor.service';
 //import { MessageService } from 'primeng/api';
 
 
@@ -21,7 +22,7 @@ export class UsuarioService {
 
   
 
-  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService, public setorService: SetorService
     ) {
     this.usuarioCollection= this.angularFireStore.collection<Usuario> ("usuario");
   }
@@ -103,17 +104,37 @@ export class UsuarioService {
   
 
   fazerLogin(usuario:Usuario){
+    ehCoordenador:Boolean;
     this.angularFireStore.collection<Usuario>("usuario", ref=>
     ref.where("siape",'==',usuario.siape)
     .where("senha", "==", usuario.senha) )
     .valueChanges().subscribe(resultado=>{
     console.log(resultado);
 
-      if( resultado.length == 0){
-        this.fazerLoginCoordenador(usuario);
-        // console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
-        // this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
 
+      if( resultado.length > 0){
+        // verificar se ele é coordenador
+         
+         this.setorService.listarTodos().subscribe(setores=>{
+           for(let i = 0; i < setores.length; i++){
+             if(setores[i].idUsuario == usuario.id){
+
+             }
+           }
+           //usuario.id == 
+     
+
+          
+           
+           
+          // percorrer todos os setores, verificar se o idusiario de setor é igual ao id do usuário logado.
+          // se algum dos setores tiver, ele é coordenador
+          // se n , ele não é coordenador
+         });
+      
+    
+      if( resultado.length == 0){
+      }
       }else{
         this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
         sessionStorage.setItem('id',resultado[0].id);
@@ -123,49 +144,11 @@ export class UsuarioService {
     });
     
   }
-
-
-  fazerLoginCoordenador(usuario:Usuario){
-    this.angularFireStore.collection<Coordenador>("coordenador", ref=>
-    ref.where("siape",'==',usuario.siape)
-    .where("senha", "==", usuario.senha) )
-    .valueChanges().subscribe(resultadoCoordenador=>{
-    console.log(resultadoCoordenador);
-
-      if( resultadoCoordenador.length == 0){
-        this.fazerLoginAdministrador(usuario);
-        // console.log (usuario.nome+"usuario não cadastrado ou senha ou nome  incorreta " + usuario.senha);
-        // this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
-
-      }else{
-        this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
-        // sessionStorage.setItem('id',resultadoCoordenador[0].id);
-        console.log(resultadoCoordenador[0].id);
-        this.rotas.navigate(['/coordenador/menu'])
-      }
-    });
-    
-  }
-
-
-
-  fazerLoginAdministrador(usuario:Usuario){
-    if(usuario.senha=="1234567" && usuario.siape==1234567){
-      this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
-      this.rotas.navigate(['/administrador/menu']);
+  
+  
+    Sair(){
+      sessionStorage.removeItem('id');
     }
-
-      else{
-        this.messageService.add({severity:'error', summary:'Message', detail:'siape ou senha incorreto!'});
-        
-      }
-    
-  }
-  
-
-
-  
-
   
 
 
@@ -204,8 +187,6 @@ export class UsuarioService {
   
    atualizar(){
     this.rotas.navigate(['/usuario/cadastro']);
-
-
 
   }
   

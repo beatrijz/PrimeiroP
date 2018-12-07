@@ -6,5 +6,9 @@
 <input  [(ngModel)]= "setor.nome"  id ="nomeSiape" type="text" pInputText placeholder="digite o nome setor"/>
 <br/> 
 <br/> 
+<b>Usuarios:</b>
+<br>
+<p-dropdown [options]="usuarios" [(ngModel)]="usuarioSelecionado" optionLabel="nome"></p-dropdown>
 <br/> 
+<br>
 <button pButton type="button" label="cadastrar Setor" (click) = 'salvar()' ></button>
