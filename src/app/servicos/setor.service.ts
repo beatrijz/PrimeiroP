@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Setor } from '../modelos/setor';
 import { MessageService } from 'primeng/api';
-import { viagem } from 'PrimeiroP/src/app/viagem/viagem';
-import { Usuario } from 'PrimeiroP/src/app/usuario/usuario';
+import { Usuario } from '../modelos/usuario';
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +30,12 @@ export class SetorService {
       this.angularFireStore.collection<Setor>("setor", ref=>
       ref.where("nome",'==',setor.nome)).valueChanges().subscribe(setorCadastrado=>{
       if(setorCadastrado.length==0){
-        console.log("setooor")
         console.log(setor.idUsuario)
         this.setorCollection.add(setor).then(setores =>{
+          console.log(setores.id);
           let userDoc= this.setorCollection.doc(setores.id);
           userDoc.update({id:setores.id})
+          this.messageService.add({severity:'success', summary:'Success Message', detail:'Order submitted'});
           this.messageService.add({severity:'success', summary:'Message', detail:'setor cadastrado!'});
           
         });
@@ -66,26 +67,20 @@ export class SetorService {
     return meuObservable;
   }
    
-atualizarSetor(id){
-  let viagem= this.angularFireStore.doc('setor/'+id);
-  console.log(id);
-  viagem.update({id:id});
-  console.log("atualizarSetor")
   
-}
-setor:Setor;
-id;
+  
+
 
 
 atualizarTodos(id,setor){
   let setorDoc=this.angularFireStore.doc('setor/'+id);
-  console.log(id);
-  console.log("antiga"+setor.nome+"");
-  setorDoc.update({nome:setor.nome 
+  setorDoc.update({nome:setor.nome,idUsuario:setor.idUsuario
      
 });
-   console.log("atualizada=>"+setor.nome+"" );
-   this.rotas.navigate(['/setor/visualizacao/'+id]);
+   console.log("atualizada para=> "+ setor.nome+"" );
+   console.log("atualizada para=> "+ setor.idUsuario+"" );
+   
+   //this.rotas.navigate(['/setor/visualizacao/'+id]);
 }
 
   
@@ -116,11 +111,15 @@ atualizarTodos(id,setor){
   
 
   deletar(setor): Promise<void> {
-    console.log("deletado com sucesso 0!");
     return this.setorCollection.doc(setor).delete();
     
  
   }  
+
+  irParaAlterar(id){
+    this.rotas.navigate(['visita/atualizar/'+ id])
+  }
+
   atualizar(){
     this.rotas.navigate(['/setor/cadastro']);
   }

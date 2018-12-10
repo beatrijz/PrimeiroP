@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Coordenador } from '../modelos/coordenador';
 import { SetorService } from './setor.service';
+import { viagem } from '../modelos/viagem';
 //import { MessageService } from 'primeng/api';
 
 
@@ -18,6 +19,7 @@ export class UsuarioService {
   usuarioCollection : AngularFirestoreCollection<Usuario>;
   private usuarioAutenticado:boolean=false;
  usuarios:Usuario[];
+ viagem:viagem;
  
 
   
@@ -25,6 +27,14 @@ export class UsuarioService {
   constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService, public setorService: SetorService
     ) {
     this.usuarioCollection= this.angularFireStore.collection<Usuario> ("usuario");
+  }
+
+
+  atualizarTodos(id, usuario){
+    let usuarioDoc=this.angularFireStore.doc('usuario/'+id);
+    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome,ehCoordenador:usuario.ehCoordenador});
+    this.listarTodos();
+    
   }
   
   cadastrar(usuario:Usuario){
@@ -40,24 +50,26 @@ export class UsuarioService {
     }
     if(usuario.nome==""){
       console.log("campo nome é obrigatóro");
-
     } else {
       this.angularFireStore.collection<Usuario>("usuario", ref=>
       ref.where("siape",'==',usuario.siape))
       .valueChanges().subscribe(resultado=>{ 
+        console.log(resultado.length);
 
       if(resultado.length == 0){
+        console.log(resultado.length);
         this.usuarioCollection.add(usuario).then(resultadoUsuario =>{
           let userDoc= this.usuarioCollection.doc(resultadoUsuario.id);
           userDoc.update({id:resultadoUsuario.id});
           console.log(usuario.nome+" cadastrado!");
-          this.rotas.navigate(['/visita/listar']);
-
+          this.rotas.navigate(['/visita/listar/'+resultadoUsuario.id]);
+          return;
         });
-      }else if(resultado.length==1){
+      }else{
+        console.log(resultado.length);
         console.log(usuario.nome+" já existente!");
         this.messageService.add({severity:'error', summary:'Service Message', detail: usuario.nome+" já existente!"});
-        
+        return;
       }
     });
    }
@@ -80,6 +92,29 @@ export class UsuarioService {
       }); });
     return meuObservable;
   }
+
+
+  listarUsuariosPorSetor(): Observable<any[]>{
+    let resultados: any[] = [];
+    let idSetor=sessionStorage.getItem('idSetor');
+    let meuObservable = new Observable<any[]>(observer => {
+    this.angularFireStore.collection<Usuario>("usuario", ref=>
+    ref.where("idSetor",'==',idSetor))
+    .snapshotChanges().subscribe(result=>{
+      result.map(documents => {
+        let id = documents.payload.doc.id;
+        let data = documents.payload.doc.data();
+        let document = { id: id, ...data };
+        resultados.push(document);
+      });
+      observer.next(resultados);
+      observer.complete();
+    }); });
+  return meuObservable;
+}
+
+
+
 
   listarEspecifico(){
 
@@ -109,51 +144,54 @@ export class UsuarioService {
   fazerLogin(usuario:Usuario){
     this.angularFireStore.collection<Usuario>("usuario", ref=>
     ref.where("siape",'==',usuario.siape)
-    .where("senha", "==", usuario.senha) )
+    .where("senha", "==", usuario.senha))
     .valueChanges().subscribe(resultado=>{
-      
-
+      sessionStorage.setItem('id',null);
       if(resultado.length>0){
-        usuario.id=resultado[0].id;
-        this.setorService.listarTodos().subscribe(setores=>{
-          for(let i =0;i<setores.length; i++){
-            if(setores[i].idUsuario == usuario.id){
-             usuario.ehCoordenador = true;
-              if(usuario.ehCoordenador==true){
-                sessionStorage.setItem('id',resultado[0].id);
-                this.rotas.navigate(['/coordenador/menu']);
+        if(usuario.senha=="1" && usuario.siape==1){
+            this.rotas.navigate(['/administrador/listarTodosUsuarios']);
+            sessionStorage.setItem('ehCoordenador','false');
+            return;
+           }
+        else{
+
+          usuario.id=resultado[0].id;
+          console.log(resultado[0])
+          this.setorService.listarTodos().subscribe(setores=>{
+            for(let i =0;i<setores.length; i++){
+              if(usuario.id == setores[i].idUsuario){
+                sessionStorage.setItem('id',usuario.id);
+                sessionStorage.setItem('idSetor',setores[i].id);
+                sessionStorage.setItem('ehCoordenador','true');
+                console.log("id coordenador"+sessionStorage.setItem('id',usuario.id));
+                console.log(sessionStorage.getItem('ehCoordenador'));
+                this.rotas.navigate(['/coordenador/ListagemUsuarios']);
                 this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
-         
-              }
-            }
-            else{
-              usuario.id=resultado[0].id;
-              sessionStorage.setItem('id',resultado[0].id);
-              this.rotas.navigate(['/visita/listar']);
-              this.messageService.add({severity:'success', summary:'Parabéns', detail:'login realizado com sucesso!'});
-            }
-          } 
-        });
-      }
-      
-      else if(usuario.senha=="1234567"&& usuario.senha=="1234567"){
-        this.rotas.navigate(['/administrador/menu']);
-
-      }
-      
-      else {
+                return;
+              } 
+            } 
+            usuario.id=resultado[0].id;
+            sessionStorage.setItem('id',resultado[0].id);
+            sessionStorage.setItem('ehCoordenador','false');
+            console.log(sessionStorage.getItem('ehCoordenador'));
+            console.log("id usuario"+sessionStorage.getItem('id'));
+            this.rotas.navigate(['/visita/listar/'+usuario.id]);
+            this.messageService.add({severity:'success', summary:'Parabéns', detail:'login realizado com sucesso!'});
+            return;
+          });
+        }
+      }else{
         this.messageService.add({severity:'error', summary:'erro de Autenticação', detail:'O usuário não existe!'});
-      };
-    });  
-  }   
-    
-
-    
+      }
+   }); 
+  }
   
   
   
   Sair(){
     sessionStorage.removeItem('id');
+    sessionStorage.removeItem('ehCoordenador');
+    sessionStorage.removeItem('idUsuario');
     this.irTelaLogin();
   }
   
@@ -167,6 +205,10 @@ export class UsuarioService {
     this.rotas.navigate(['/usuario/cadastro']);
   }
 
+  irTelaAlterar(){
+    this.rotas.navigate(['/usuario/cadastro']);
+  }
+
 
 
   atualizarViagem(id){
@@ -176,13 +218,7 @@ export class UsuarioService {
     
   }
   
-  atualizarTodos(id, usuario){
-    let usuarioDoc=this.angularFireStore.doc('usuario/'+id);
-    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome});
-    this.listarTodos();
-   
-    
-  }
+  
   
   
 }

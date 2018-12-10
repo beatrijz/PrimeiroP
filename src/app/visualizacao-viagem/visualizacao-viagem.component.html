@@ -7,7 +7,6 @@
        
     </ng-template>
     <ng-template pTemplate="body" let-viagemTecnica>
-        
         <tr> <td> <b>Empresa/Evento(*):</b> {{viagemTecnica.empresa}} </td> </tr>
         <tr> <td> <b>Cidade/Local:</b>{{viagemTecnica.cidade}} </td> </tr>
         <tr> <td> <b>Roteiro:</b>{{viagemTecnica.roteiro }} </td> </tr>
@@ -27,5 +26,11 @@
         <tr> <td> <b>Metodologia:</b>{{viagemTecnica.metodologia }}</td> </tr>
         <tr> <td> <b>Formas de avaliação da aprendizagem</b>{{viagemTecnica.formasAprendizagem}} </td> </tr>
 
-    </ng-template>
+  <div *ngIf="ehCoordenador">
+    <br>
+    <b>Parecer:</b>
+    <input  [(ngModel)]= "Parecer.parecer"  id ="Parecer" type="text" pInputText placeholder="digite o parecer"/>
+    <p-button (click)= "salvar(viagemTecnica.id)">Salvar</p-button>  
+</div>
+</ng-template>
 </p-table>

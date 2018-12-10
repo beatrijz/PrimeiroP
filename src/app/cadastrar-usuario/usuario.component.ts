@@ -18,7 +18,7 @@ export class UsuarioComponent implements OnInit {
   
   setores:Setor[];
   usuario:Usuario;
-  setorSelecionado;
+  setorEscolhido;
 
   opcoes:String[];
   constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService) {
@@ -38,7 +38,7 @@ export class UsuarioComponent implements OnInit {
       }
     );
      
-    console.log(this.usuario.idSetor)
+   
   }
 
   ngOnInit() {
@@ -50,10 +50,18 @@ export class UsuarioComponent implements OnInit {
   }
 
   salvar(){
+     this.usuario.idSetor=this.setorEscolhido.id;
     this.usuarioService.cadastrar(this.usuario);
-    console.log("o nome do setor era pra está aqui"+this.setorSelecionado.nome);
-    console.log("o id so setor era pra está aqui"+this.setorSelecionado.id);
-    this.usuario.idSetor=this.setorSelecionado.id;
+
+
+    // console.log(this.setorEscolhido);
+  //  for(let i=0;i<this.setorSelecionado;i++){
+  //    console.log("voty "+this.setorSelecionado[i]);
+  //    console.log(this.setorSelecionado[i].id);
+  //  }
+    //console.log("o nome do setor era pra está aqui "+this.setorSelecionado.nome);
+    //console.log("o id so setor era pra está aqui" +this.setorSelecionado.id);
+    
     
 
   }

@@ -41,6 +41,12 @@ import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/li
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import {DropdownModule} from 'primeng/dropdown';
 import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usuario.component';
+import { ListarSetorComponent } from './listar-setor/listar-setor.component';
+import { AlterarSetorComponent } from './alterar-setor/alterar-setor.component';
+import { ParecerService } from './servicos/parecer.service';
+// import { VisitaComponent } from './listar/visita/visita.component';
+// import { ListarVisitaComponent } from './listar-visita/listar-visita.component';
+
 
 
 
@@ -49,18 +55,22 @@ import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usua
 export const rotas : Routes = [ 
   {path: "usuario/cadastro", component:UsuarioComponent},
   {path: "visita/cadastro", component:ViagemComponent},
-  {path: "visita/listar", component:ListarViagemComponent},
-  {path: "usuario/listar", component:ListarUsuarioComponent},
+  {path: "visita/listar/:id", component:ListarViagemComponent},
+  {path: "administrador/listarTodosUsuarios", component:ListarUsuarioComponent},
+  {path: "setor/listar", component:ListarSetorComponent},
   {path: "visita/visualizacao/:id", component:VisualizacaoViagemComponent},
+  {path: "setor/visualizacao/:id", component:VisualizacaoViagemComponent},
   {path: "", component:LoginComponent},
   {path: "usuario/menu", component:MenuUsuarioComponent},
   {path: "coordenador/menu", component:MenuCoordenadorComponent},
   {path: "administrador/menu", component:MenuAdministradorComponent},
   {path: "visita/atualizar/:id", component:AlterarViagemComponent},
   {path: "usuario/atualizar/:id", component:AlterarUsuarioComponent},
+  {path: "setor/atualizar/:id", component:AlterarSetorComponent},
   {path: "coordenador/cadastro", component:CadastrarCoordenadorComponent},
   {path: "setor/cadastro", component:CadastrarSetorComponent},
-  {path: "coordenador/visita/listar", component:ListagemParaCoordenadorComponent}
+  {path: "coordenador/ListagemUsuarios", component:ListagemParaCoordenadorComponent},
+ 
 
 
 
@@ -86,6 +96,14 @@ export const rotas : Routes = [
     MenuUsuarioComponent,
     ListagemParaCoordenadorComponent,
     VisualizarUsuarioComponent,
+    ListarSetorComponent,
+    AlterarSetorComponent,
+    
+   
+    
+    // VisitaComponent,
+    // ListarVisitaComponent,
+    
 
     
    
@@ -126,7 +144,7 @@ export const rotas : Routes = [
     
   ],
   
-  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService,MessageService],
+  providers: [ViagemService,AngularFirestore, UsuarioService, CoordenadorService,MessageService, ParecerService],
   bootstrap: [AppComponent]
   
 })

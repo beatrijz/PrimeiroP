@@ -32,9 +32,4 @@ atualizarViagem(){
   console.log("atualizarViagem")
 }
 
-alterar(){
-    this.viagemService.atualizar();
-    console.log("alterar");
-  }
-
 }

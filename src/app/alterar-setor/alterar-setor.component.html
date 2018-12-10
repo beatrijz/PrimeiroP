@@ -1,3 +1,4 @@
+
 <p align=center><img src="marca.png"/> </p> 
 <router-outlet></router-outlet>
 <h2> Cadastro de setores:</h2>
@@ -6,9 +7,9 @@
 <input  [(ngModel)]= "setor.nome"  id ="nomeSiape" type="text" pInputText placeholder="digite o nome setor"/>
 <br/> 
 <br/> 
-<!-- <b>escolha o coordenador:</b>
+<b>Usuarios:</b>
 <br>
-<p-dropdown [options]="usuarios" [(ngModel)]="usuarioSelecionado" optionLabel="nome"  #selectUsuarios></p-dropdown> -->
-<!-- <br/>  -->
+<p-dropdown [options]="usuarios" [(ngModel)]="coordenadorAdicionado" optionLabel="nome"  #selectUsuarios></p-dropdown>
+<br/> 
 <br>
-<button pButton type="button" label="cadastrar Setor" (click) = 'salvar()' ></button>
+<button  pButton  type = "botão"  label = " atualizar "  (click) = ' atualizarSetor() ' > </button >

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { UsuarioService } from '../servicos/usuario.service';
 
 @Component({
   selector: 'app-menu-administrador',
@@ -8,7 +9,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuAdministradorComponent implements OnInit {
 
-  constructor() { }
+  constructor(public usuarioService:UsuarioService) { }
   items: MenuItem[];
   activeItem: MenuItem;
   ngOnInit() {
@@ -18,10 +19,7 @@ export class MenuAdministradorComponent implements OnInit {
           icon: 'pi pi-fw pi-cog',
           items: [
               {label: 'Cadastrar', icon: 'pi pi-fw pi-trash',routerLink: ['/usuario/cadastro']},
-              {label: 'Buscar', icon: 'pi pi-fw pi-refresh'},
-              {label: 'Alterar', icon: 'pi pi-fw pi-refresh'},
               {label: 'listar', icon: 'pi pi-fw pi-refresh'},
-              {label: 'Deletar', icon: 'pi pi-fw pi-refresh'}
           ]
       },
     {
@@ -29,15 +27,14 @@ export class MenuAdministradorComponent implements OnInit {
       icon: 'pi pi-fw pi-cog',
       items: [
           {label: 'Cadastrar', icon: 'pi pi-fw pi-trash',routerLink: ['/setor/cadastro']},
-          {label: 'Buscar', icon: 'pi pi-fw pi-refresh'},
-          {label: 'Alterar', icon: 'pi pi-fw pi-refresh'},
-          {label: 'listar', icon: 'pi pi-fw pi-refresh'},
-          {label: 'Deletar', icon: 'pi pi-fw pi-refresh'}
+          {label: 'listar', icon: 'pi pi-fw pi-refresh',routerLink: ['/setor/listar']},
       ]
   },
       
       {
-          label: 'sair', icon: 'pi pi-fw pi-times'
+        label: 'sair', icon: 'pi pi-fw pi-times',routerLink: ['/'],command:(event) => {
+            this.usuarioService.Sair();
+        }
       }
   ];
   }

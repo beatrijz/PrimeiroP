@@ -1,23 +1,21 @@
 <app-menu-coordenador></app-menu-coordenador>
 <p align=center><img src="marca.png"/> </p>
-<p-table [value]="viagensSetor">
+<p-table [value]="usuariosSetor">
   <ng-template pTemplate="header">
       <tr>
-          <th>nome</th> 
-          <th>senha</th> 
-          <th>Visualizar</th>
-
-          
-      </tr>
+          <th>Usuário</th> 
+          <th>Visitas</th>
+      </tr>   
   </ng-template>
-  <ng-template pTemplate="body" let-viagem> 
+  <ng-template pTemplate="body" let-usuarioSetor> 
       <tr>
+          <td>  {{usuarioSetor.nome}} </td>
+            <a [routerLink]="['/visita/listar',usuarioSetor.id]"> Visualizar </a> 
 
-          <td> <a [routerLink]="['/visita/visualizacao', viagem.id]">  {{viagemSetor.nome}} </a> </td>
-          <td> <a [routerLink]="['/visita/visualizacao', viagem.id]"> {{viagemSetor.senha}} </a> </td>
-          <td>  <p-button  (click)="deletar(viagem)">Visualizar</p-button>  </td>
-         
-
+            
+            
+            
+            
       </tr>
       
   </ng-template>

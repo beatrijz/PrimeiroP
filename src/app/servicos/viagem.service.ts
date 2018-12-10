@@ -4,6 +4,7 @@ import { viagem } from '../modelos/viagem';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import {Usuario} from '../modelos/usuario'
+import { UsuarioComponent } from '../cadastrar-usuario/usuario.component';
 
 
 @Injectable({
@@ -66,7 +67,7 @@ export class ViagemService {
     console.log(viagem.id +"= id viagem");
     userDoc.update({idUsuario: sessionStorage.getItem('id')})
     console.log(viagem.idUsuario+" idDo usuario");
-    this.rotas.navigate(['/visita/listar']);
+    this.rotas.navigate(['/visita/listar/'+viagem.idUsuario]);
     
 
     });}
@@ -131,27 +132,64 @@ atualizarTodos(id, viagem){
   }
 
 
+
+
+
+
+
+
+
+  
   getViagensUsuario() {
+    console.log("coordenador "+sessionStorage.getItem('ehCoordenador'));
+    console.log("usuario "+sessionStorage.getItem('ehCoordenador'));
+
+    if(sessionStorage.getItem('ehCoordenador')=='false'){
+      console.log("entro no de  usuario")
      return this.angularFireStore.collection<viagem>("viagem", ref=>  
-      ref.where ("idUsuario",'==',sessionStorage.getItem('id')))
-      .valueChanges();
-      
+     ref.where ("idUsuario",'==',sessionStorage.getItem('id')))
+      .valueChanges()
+      } 
+    else{
+      console.log("entro no de coordenador")
+      console.log("listar igual a esse= "+sessionStorage.getItem('idUsuarioRota'));
+      return this.angularFireStore.collection<viagem>("viagem", ref=>  
+      ref.where ("idUsuario",'==',sessionStorage.getItem('idUsuarioRota')))
+      .valueChanges()
+      }   
     }
+
+
+
+
+
+
+
+
+
+
+
+
+    getUsuariosSetor(idSetor) {
+      return this.angularFireStore.collection<Usuario>("usuario", ref=>
+       ref.where ("idSetor",'==',idSetor))
+       .valueChanges();
+   
+     }
   
 
   deletar(viagem): Promise<void> {
     console.log("deletado com sucesso 0!");
     return this.viagemCollection.doc(viagem).delete();
-    console.log("deletado com sucesso 1!");
+   
  
   }  
   atualizar(){
     this.rotas.navigate(['/usuario/cadastro']);
-
-
-
   }
   
-
+  irParaAlterar(id){
+    this.rotas.navigate(['visita/atualizar/'+ id])
+  }
   
 }

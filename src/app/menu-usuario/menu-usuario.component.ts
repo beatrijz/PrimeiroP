@@ -18,9 +18,7 @@ export class MenuUsuarioComponent implements OnInit {
   viagem: viagem;
 //   usuario:Usuario;
 
-  sair(){
-    this.usuarioService.Sair();
-  }
+  
   
       ngOnInit() {
         this.items = [
@@ -51,7 +49,7 @@ export class MenuUsuarioComponent implements OnInit {
             
             {
                 label: 'sair', icon: 'pi pi-fw pi-times',routerLink: ['/'],command:(event) => {
-                    this.sair();
+                    this.usuarioService.Sair();
                 }
             }
         ];

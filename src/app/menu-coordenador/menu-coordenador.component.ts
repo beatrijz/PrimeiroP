@@ -33,15 +33,15 @@ export class MenuCoordenadorComponent implements OnInit {
           ]
       },
       {
-          label: 'sair', icon: 'pi pi-fw pi-times'
+        label: 'sair', icon: 'pi pi-fw pi-times',routerLink: ['/'],command:(event) => {
+            this.usuarioService.Sair();
+        }
       }
   ];
   }
 
 
-  sairSistema(){
-    this.usuarioService
-  }
+  
   }
 
   

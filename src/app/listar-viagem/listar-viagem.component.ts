@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { viagem } from '../modelos/viagem';
 import { Usuario } from '../modelos/usuario';
 import { ViagemService } from '../servicos/viagem.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-listar-viagem',
@@ -12,29 +12,39 @@ import { Router } from '@angular/router';
 export class ListarViagemComponent implements OnInit {
   viagens:viagem[];
   usuario:Usuario;
+  idUsuario;
+  
 
-  constructor(private viagemServico:ViagemService, private router: Router){
 
-   this.viagemServico.getViagensUsuario().subscribe(
+  ngOnInit() {
+    this.activedRoute.params.subscribe(params =>{
+    this.idUsuario=params['id'];
+    sessionStorage.setItem('idUsuarioRota',this.idUsuario);
+    
+    
+    });
+ }
+
+
+  constructor(private viagemServico:ViagemService, private router: Router,private activedRoute:ActivatedRoute){
+    console.log("coordenador "+sessionStorage.getItem('idUsuarioRota'));
+    console.log("usuario "+sessionStorage.getItem('id'));
+    this.viagemServico.getViagensUsuario().subscribe(
       listaViagens=>{
         this.viagens = listaViagens;
       }
     );
-
   }
   deletar(viagem){
     this.viagemServico.deletar(viagem.id);
   }
 
-  // listarUsuarioEspecifico(){
-  //   this.viagemServico.listarUsuarioEspecifico(this.usuario);
-  // }
-    
+ 
 
-  ngOnInit() {
-  }
+
+
   irParaAlterar(id){
-    this.router.navigate(['visita/atualizar/'+ id])
+    this.viagemServico.irParaAlterar(id);
   }
   
 }
