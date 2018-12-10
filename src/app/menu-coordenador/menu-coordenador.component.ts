@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { UsuarioService } from '../servicos/usuario.service';
+import { SetorService } from '../servicos/setor.service';
 
 @Component({
   selector: 'app-menu-coordenador',
@@ -9,7 +10,9 @@ import { UsuarioService } from '../servicos/usuario.service';
 })
 export class MenuCoordenadorComponent implements OnInit {
 
-  constructor(public usuarioService:UsuarioService) { }
+  constructor(public usuarioService:UsuarioService, private setorService: SetorService) {
+
+   }
   items: MenuItem[];
   activeItem: MenuItem;
 
@@ -39,10 +42,7 @@ export class MenuCoordenadorComponent implements OnInit {
       }
   ];
   }
-
-
-  
-  }
+}
 
   
 

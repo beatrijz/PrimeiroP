@@ -1,4 +1,4 @@
-export interface Setor{
+export class Setor{
     nome:String;
     id?:String;
     idUsuario?:String;

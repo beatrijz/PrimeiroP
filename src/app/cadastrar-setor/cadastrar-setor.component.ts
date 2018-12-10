@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { SetorService } from '../servicos/setor.service';
 import { Setor } from '../modelos/setor';
 import { Router } from '@angular/router';
-import { Usuario } from 'src/app/modelos/usuario';
+import { Usuario } from '../modelos/usuario';
 import { UsuarioService } from '../servicos/usuario.service';
+
 
 
 @Component({

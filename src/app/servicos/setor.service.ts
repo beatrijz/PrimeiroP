@@ -3,18 +3,22 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { Setor } from '../modelos/setor';
-import { MessageService } from 'primeng/api';
+import { viagem } from '../modelos/viagem';
 import { Usuario } from '../modelos/usuario';
+import { ViagemService } from './viagem.service';
+import { MessageService } from 'primeng/api';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SetorService {
+  Viagem:viagem;
 
   setorCollection : AngularFirestoreCollection<Setor>;
 
-  constructor(public angularFireStore:AngularFirestore,private rotas:Router,public messageService:MessageService) {
+
+  constructor(public angularFireStore:AngularFirestore,private rotas:Router, private viagemService: ViagemService,public messageService:MessageService) {
     this.setorCollection= this.angularFireStore.collection<Setor> ("setor");
 
    }
@@ -105,6 +109,32 @@ atualizarTodos(id,setor){
       .valueChanges();
       
     }
+    
+    getViagensCoordenacao() {
+      return this.angularFireStore.collection<viagem>("viagem", ref=>  
+       ref.where ("idUsuario",'==',sessionStorage.getItem('id')))
+       .valueChanges();
+       
+     }
+    //  setores:Setor[];
+    //  usuarios: Usuario[];
+    //  usuario:Usuario;
+    //  vetor: Setor[];
+
+    //  verificarUsuario(){
+    //   for(let i=0; i<this.usuarios.length; i++){
+    //     if (this.usuarios[i].idSetor==this.vetor[i].id){
+    //       this.viagemService.listarPorId(this.usuarios[i]);
+    //       for(let i=0; i<this.vetor.length; i++){
+    //         this.vetor[i]=this.usuario[i];
+    //         console.log(this.vetor);
+    //       }
+  
+       // }
+        
+      //}
+  
+    //}
   
        
       

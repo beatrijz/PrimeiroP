@@ -1,4 +1,3 @@
-
 export interface Coordenador{
 nome:String;
 idUsuario?:String;

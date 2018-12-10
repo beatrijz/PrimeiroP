@@ -177,6 +177,14 @@ atualizarTodos(id, viagem){
    
      }
   
+   
+       
+      
+
+
+   
+    
+  
 
   deletar(viagem): Promise<void> {
     console.log("deletado com sucesso 0!");
