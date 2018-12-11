@@ -141,17 +141,14 @@ atualizarTodos(id, viagem){
 
   
   getViagensUsuario() {
-    console.log("coordenador "+sessionStorage.getItem('ehCoordenador'));
-    console.log("usuario "+sessionStorage.getItem('ehCoordenador'));
-
-    if(sessionStorage.getItem('ehCoordenador')=='false'){
-      console.log("entro no de  usuario")
+     if(sessionStorage.getItem('ehCoordenador')=='false'){
+     console.log("está logado como servidor");
      return this.angularFireStore.collection<viagem>("viagem", ref=>  
      ref.where ("idUsuario",'==',sessionStorage.getItem('id')))
       .valueChanges()
       } 
     else{
-      console.log("entro no de coordenador")
+      console.log("está logado como coordenaodr");
       console.log("listar igual a esse= "+sessionStorage.getItem('idUsuarioRota'));
       return this.angularFireStore.collection<viagem>("viagem", ref=>  
       ref.where ("idUsuario",'==',sessionStorage.getItem('idUsuarioRota')))

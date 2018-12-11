@@ -23,7 +23,7 @@ export class ListarSetorComponent implements OnInit {
     this.setorService.deletar(setor.id);
   }
   irParaAlterar(id){
-    this.setorService.irParaAlterar(id);
+    this.setorService.irParaAlterarSetor(id);
   }
  
 

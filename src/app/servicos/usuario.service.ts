@@ -39,36 +39,42 @@ export class UsuarioService {
   
   cadastrar(usuario:Usuario){
     if(usuario.senha==""){
-      console.log("campo senha é obrigatóro");
-      this.messageService.add({severity:'error', summary:'Service Message', detail:'Via MessageService'});
+      
+      this.messageService.add({severity:'error', summary:'Service Message', detail:'campo senha é obrigatóro'});
+      console.log("senha indefinida")
+      return;
+    }
+    if(usuario.idSetor==null){
+      this.messageService.add({severity:'error', summary:'Service Message', detail:'setor é obrigatóro'});
+      console.log("setor indefinida");
+      return;
     }
     if(usuario.siape==null){
-      console.log("campo siape é obrigatóro");
-    }
-    if(usuario.siape==null){
-      console.log("campo setor é obrigatóro");
+      this.messageService.add({severity:'error', summary:'Service Message', detail:'campo sipae é obrigatóro'});
+      console.log("siape indefinida")
+      return;
     }
     if(usuario.nome==""){
-      console.log("campo nome é obrigatóro");
+      this.messageService.add({severity:'error', summary:'Service Message', detail:'campo nome é obrigatóro'});
+      console.log("nome indefinido")
+      return;
     } else {
       this.angularFireStore.collection<Usuario>("usuario", ref=>
       ref.where("siape",'==',usuario.siape))
       .valueChanges().subscribe(resultado=>{ 
-        console.log(resultado.length);
 
       if(resultado.length == 0){
-        console.log(resultado.length);
         this.usuarioCollection.add(usuario).then(resultadoUsuario =>{
           let userDoc= this.usuarioCollection.doc(resultadoUsuario.id);
           userDoc.update({id:resultadoUsuario.id});
+          this.messageService.add({severity:'success', summary:'Service Message', detail: usuario.nome+" parabéns,voce está cadastrado!"});
+          this.rotas.navigate(['/administrador/listarTodosUsuarios']);
           console.log(usuario.nome+" cadastrado!");
-          this.rotas.navigate(['/visita/listar/'+resultadoUsuario.id]);
           return;
         });
       }else{
-        console.log(resultado.length);
-        console.log(usuario.nome+" já existente!");
         this.messageService.add({severity:'error', summary:'Service Message', detail: usuario.nome+" já existente!"});
+        console.log(usuario.nome+" já existente!");
         return;
       }
     });
@@ -134,6 +140,7 @@ export class UsuarioService {
   }
 
   deletar(usuario): Promise<void> {
+    this.messageService.add({severity:'info', summary:'Service Message', detail: usuario.nome+" você deletou um usuário!"});
     return this.usuarioCollection.doc(usuario).delete();
     
   }
@@ -152,32 +159,32 @@ export class UsuarioService {
             this.rotas.navigate(['/administrador/listarTodosUsuarios']);
             sessionStorage.setItem('ehCoordenador','false');
             sessionStorage.setItem('ehAdm',"true");
+            this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
+            console.log("usuario é administrador");
             return;
            }
         else{
 
           usuario.id=resultado[0].id;
-          console.log(resultado[0])
           this.setorService.listarTodos().subscribe(setores=>{
             for(let i =0;i<setores.length; i++){
               if(usuario.id == setores[i].idUsuario){
                 sessionStorage.setItem('id',usuario.id);
                 sessionStorage.setItem('idSetor',setores[i].id);
                 sessionStorage.setItem('ehCoordenador','true');
-                console.log("id coordenador"+sessionStorage.setItem('id',usuario.id));
-                console.log(sessionStorage.getItem('ehCoordenador'));
                 this.rotas.navigate(['/coordenador/ListagemUsuarios']);
                 this.messageService.add({severity:'success', summary:'Message', detail:'login realizado com sucesso!'});
+                console.log("usuario é coordenador");
                 return;
               } 
             } 
             usuario.id=resultado[0].id;
             sessionStorage.setItem('id',resultado[0].id);
             sessionStorage.setItem('ehCoordenador','false');
-            console.log(sessionStorage.getItem('ehCoordenador'));
-            console.log("id usuario"+sessionStorage.getItem('id'));
+
             this.rotas.navigate(['/visita/listar/'+usuario.id]);
             this.messageService.add({severity:'success', summary:'Parabéns', detail:'login realizado com sucesso!'});
+            console.log("usuario é servidor");
             return;
           });
         }

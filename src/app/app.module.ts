@@ -47,7 +47,7 @@ import { MenuUsuarioComponent } from './menu-usuario/menu-usuario.component';
 import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/listagem-para-coordenador.component';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import {DropdownModule} from 'primeng/dropdown';
-import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usuario.component';
+
 import { ListarSetorComponent } from './listar-setor/listar-setor.component';
 import { AlterarSetorComponent } from './alterar-setor/alterar-setor.component';
 import { ParecerService } from './servicos/parecer.service';
@@ -109,7 +109,6 @@ export const rotas : Routes = [
     MenuAdministradorComponent,
     MenuUsuarioComponent,
     ListagemParaCoordenadorComponent,
-    VisualizarUsuarioComponent,
     ListarSetorComponent,
     AlterarSetorComponent,
     BuscarViagemComponent,

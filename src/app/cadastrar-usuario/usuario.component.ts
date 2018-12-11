@@ -25,6 +25,11 @@ export class UsuarioComponent implements OnInit {
    
   constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService, private viagemService: ViagemService) {
     this.usuario={nome:'',senha:'',siape:null,id:'',idSetor:''}
+    this.setorService.listarTodos().subscribe(
+      listaSetor=>{
+        this.setores = listaSetor;
+      }
+    );
 
   }
 

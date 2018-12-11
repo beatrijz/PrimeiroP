@@ -28,27 +28,29 @@ export class SetorService {
     if(setor.nome==null){
       this.messageService.add({severity:'error', summary:'Message', detail:'o nome do setor é obrigatório!'});
       console.log("o nome do setor é obrigatório! "+setor.nome);
+      return;
     }
     else{
-      console.log(setor);
       this.angularFireStore.collection<Setor>("setor", ref=>
       ref.where("nome",'==',setor.nome)).valueChanges().subscribe(setorCadastrado=>{
       if(setorCadastrado.length==0){
-        console.log(setor.idUsuario)
         this.setorCollection.add(setor).then(setores =>{
           console.log(setores.id);
           let userDoc= this.setorCollection.doc(setores.id);
           userDoc.update({id:setores.id})
           this.messageService.add({severity:'success', summary:'Success Message', detail:'Order submitted'});
           this.messageService.add({severity:'success', summary:'Message', detail:'setor cadastrado!'});
+          console.log("cadastrado efetuado");
+          return;
           
         });
       }
 
       if(setorCadastrado.length>0){
-        this.messageService.add({severity:'error', summary:'Message', detail:'setor já estava cadastrado!'});
-        console.log("o setor já está cadastrado "+setor.nome);
-        console.log(setorCadastrado.length);
+        this.messageService.add({severity:'error', summary:'Message', detail:"Já possui"+setorCadastrado.length +"com o nome:"+setor.nome});
+        console.log("Já possui "+setorCadastrado.length +" setor com o nome:"+setor.nome);
+        return;
+       
       }
      
      });
@@ -148,6 +150,10 @@ atualizarTodos(id,setor){
 
   irParaAlterar(id){
     this.rotas.navigate(['visita/atualizar/'+ id])
+  }
+
+  irParaAlterarSetor(id){
+    this.rotas.navigate(['setor/atualizar/'+ id])
   }
 
   atualizar(){
