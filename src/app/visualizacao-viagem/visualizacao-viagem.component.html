@@ -1,5 +1,12 @@
-<p align=center><img src="marca.png"/> </p> 
-<h1> VISITA TÉCNICA</h1>
+<div *ngIf="ehCoordenador">
+    <app-menu-coordenador></app-menu-coordenador>
+</div>
+
+<div *ngIf="ehServidor">
+    <app-menu-usuario></app-menu-usuario>  
+</div>
+
+<h2> VISITA TÉCNICA</h2>
 <p-table [value]="viagensTecnicas">   
     <ng-template pTemplate="header">
        

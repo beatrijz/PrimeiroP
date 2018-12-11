@@ -51,6 +51,9 @@ import { VisualizarUsuarioComponent } from './visualizar-usuario/visualizar-usua
 import { ListarSetorComponent } from './listar-setor/listar-setor.component';
 import { AlterarSetorComponent } from './alterar-setor/alterar-setor.component';
 import { ParecerService } from './servicos/parecer.service';
+import { BuscarViagemComponent } from './buscar-viagem/buscar-viagem.component';
+import { ListarParecerComponent } from './listar-parecer/listar-parecer.component';
+import { AlterarParecerComponent } from './alterar-parecer/alterar-parecer.component';
 // import { VisitaComponent } from './listar/visita/visita.component';
 // import { ListarVisitaComponent } from './listar-visita/listar-visita.component';
 
@@ -77,6 +80,8 @@ export const rotas : Routes = [
   {path: "coordenador/cadastro", component:CadastrarCoordenadorComponent},
   {path: "setor/cadastro", component:CadastrarSetorComponent},
   {path: "coordenador/ListagemUsuarios", component:ListagemParaCoordenadorComponent},
+  {path: "coordenador/Parecer/Listar", component:ListarParecerComponent},
+  {path: "coordenador/Parecer/atualizar/:id", component:AlterarParecerComponent}
  
 
 
@@ -107,6 +112,9 @@ export const rotas : Routes = [
     VisualizarUsuarioComponent,
     ListarSetorComponent,
     AlterarSetorComponent,
+    BuscarViagemComponent,
+    ListarParecerComponent,
+    AlterarParecerComponent,
     
    
     

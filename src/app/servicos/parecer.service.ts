@@ -45,24 +45,15 @@ export class ParecerService {
     return meuObservable;
   }
    
-atualizarParecer(id){
-  let parecer= this.angularFireStore.doc('parecer/'+id);
-  console.log(id);
-  parecer.update({id:id});
-  console.log("atualizarParecer")
-  
-}
-parecer:Parecer;
-id;
 
 
-atualizarTodos(id, parecer){
+atualizarTodos(id, Parecer){
   let parecerDoc=this.angularFireStore.doc('parecer/'+id);
   console.log(id);
-  parecerDoc.update({parecer:parecer.parecer, id: parecer.id, idViagem:parecer.idUsuario 
+  parecerDoc.update({parecer:Parecer.parecer 
 });
-   console.log("atualizada=>"+parecer.empresa+"" );
-   this.rotas.navigate(['/parecer/visualizacao/'+id]);
+   console.log("atualizada=>"+Parecer.parecer+"" );
+   
 }
 
   
@@ -101,7 +92,7 @@ atualizarTodos(id, parecer){
   deletar(parecer): Promise<void> {
     console.log("deletado com sucesso 0!");
     return this.parecerCollection.doc(parecer).delete();
-    console.log("deletado com sucesso 1!");
+    
  
   }  
   atualizar(){
@@ -109,7 +100,7 @@ atualizarTodos(id, parecer){
   }
   
   irParaAlterar(id){
-    this.rotas.navigate(['visita/atualizar/'+ id])
+    this.rotas.navigate(["coordenador/Parecer/atualizar/"+id]);
   }
   
 }

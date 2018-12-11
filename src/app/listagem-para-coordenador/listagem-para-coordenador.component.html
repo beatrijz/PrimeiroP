@@ -1,5 +1,7 @@
 <app-menu-coordenador></app-menu-coordenador>
-<p align=center><img src="marca.png"/> </p>
+
+<h2><p>servidores do setor ,com suas respectivas solicitações de visitas</p></h2>
+
 <p-table [value]="usuariosSetor">
   <ng-template pTemplate="header">
       <tr>
@@ -11,12 +13,6 @@
       <tr>
           <td>  {{usuarioSetor.nome}} </td>
             <a [routerLink]="['/visita/listar',usuarioSetor.id]"> Visualizar </a> 
-
             
-            
-            
-            
-      </tr>
-      
   </ng-template>
 </p-table>

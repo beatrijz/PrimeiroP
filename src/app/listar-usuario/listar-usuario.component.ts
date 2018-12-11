@@ -22,6 +22,10 @@ export class ListarUsuarioComponent implements OnInit {
     this.usuarioService.deletar(usuario.id);
   }
 
+  AtualizarUsuario(idUsuario){
+    this.usuarioService.irTelaAlterar(idUsuario);
+  }
+
   ngOnInit() {
   }
 

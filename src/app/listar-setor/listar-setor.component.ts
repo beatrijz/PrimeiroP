@@ -23,8 +23,7 @@ export class ListarSetorComponent implements OnInit {
     this.setorService.deletar(setor.id);
   }
   irParaAlterar(id){
-    this.rotas.navigate(['setor/atualizar/'+ id]);
-    sessionStorage.setItem('idSetor',id);
+    this.setorService.irParaAlterar(id);
   }
  
 

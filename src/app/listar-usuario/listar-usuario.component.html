@@ -23,6 +23,7 @@
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.senha}} </a> </td>
 
           <td>  <p-button  (click)="deletar(usuario)">Deletar</p-button>  </td>
+          <td>  <p-button  (click)="AtualizarUsuario(usuario.id)">Atualizar</p-button>  </td>
       </tr>
       
   </ng-template>

@@ -17,21 +17,26 @@ export class VisualizacaoViagemComponent implements OnInit {
   private sub: any;
   private viagemResultado;
   Parecer:Parecer;
+  ehServidor=false
   ehCoordenador=true;
 
  
 
   constructor(private route: ActivatedRoute,private viagemS:ViagemService,private parecerService:ParecerService) {
   this.Parecer= {parecer:'',idViagem:'',id:''};
-
-  console.log("sera no construtor"+this.ehCoordenador)
-  if(sessionStorage.getItem('ehCoordenador')=='false'){
-    this.ehCoordenador=false;
-  }
   }
   
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+
+    if(sessionStorage.getItem('ehCoordenador')=='false'){
+      this.ehCoordenador=false;
+      this.ehServidor=true;
+      console.log("menu coordenador"+this.ehCoordenador);
+      console.log("menu coordenador"+this.ehServidor);
+    }
+
+
+      this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
       console.log(params['id']);
       this.viagemS.listarPorId(this.id).subscribe(resultado => {

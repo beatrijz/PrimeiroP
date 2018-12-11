@@ -1,0 +1,27 @@
+
+<app-menu-coordenador></app-menu-coordenador>
+<b>Listagens dos Pareces</b>
+<p-table [value]="pareces">
+  <ng-template pTemplate="header">
+      <tr>
+
+          <th> Parecer </th>
+          <th> Viagem </th>
+          <th>Deleta</th>
+          <th>Alterar</th>
+         
+
+         
+          
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-parecer>
+      <tr>
+          <td>{{parecer.parecer}}</td>
+          <td>{{parecer.idViagem}}</td>
+          <td>  <p-button  (click)="deletar(parecer)">Deletar</p-button>  </td>
+          <td>  <p-button  (click)="atuaalizar(parecer.id)">Atualizar</p-button>  </td>
+      </tr>
+      
+  </ng-template>
+</p-table>

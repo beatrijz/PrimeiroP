@@ -24,7 +24,7 @@ export class UsuarioComponent implements OnInit {
 
    
   constructor(public router : Router,private usuarioService: UsuarioService,private setorService:SetorService, private viagemService: ViagemService) {
-    console.log(this.usuario.idSetor);
+    this.usuario={nome:'',senha:'',siape:null,id:'',idSetor:''}
 
   }
 

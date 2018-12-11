@@ -1,5 +1,13 @@
-<app-menu-usuario></app-menu-usuario>
-<p align=center><img src="marca.png"/> </p>
+<div *ngIf="ehCoordenador">
+    <app-menu-coordenador></app-menu-coordenador>
+    <h2>Visitas desse servidor</h2>
+</div>
+
+<div *ngIf="ehServidor">
+    <app-menu-usuario></app-menu-usuario>
+    <h2>Suas visitas</h2>
+</div>
+
 <p-table [value]="viagens">
   <ng-template pTemplate="header">
       <tr>

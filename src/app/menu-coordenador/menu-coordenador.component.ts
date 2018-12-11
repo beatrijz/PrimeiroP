@@ -25,22 +25,27 @@ export class MenuCoordenadorComponent implements OnInit {
                   label: 'editar',  
                   icon: 'pi pi-fw pi-plus',
                   items: [
-                      {label: 'Alterar Dados'},
-                      {label: 'Visualizar'},
+                    {label: 'Alterar Dados',routerLink: ["/usuario/atualizar/", sessionStorage.getItem('id')]}
 
-                  ]
-              },
-             
+                    ]
+                },
               {separator:true},
               {label: 'sair'}
-          ]
+            ]
       },
       {
         label: 'sair', icon: 'pi pi-fw pi-times',routerLink: ['/'],command:(event) => {
             this.usuarioService.Sair();
         }
-      }
-  ];
+      },
+      {
+        label: 'Pareces',
+        icon: 'pi pi-fw pi-cog',
+        items: [
+            {label: 'listar', icon: 'pi pi-fw pi-refresh',routerLink: ['/coordenador/Parecer/Listar']},
+        ]
+    }
+    ];
   }
 }
 

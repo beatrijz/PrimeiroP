@@ -1,16 +1,25 @@
-<p align=center><img src="marca.png"/> </p> 
-<router-outlet></router-outlet>
-<h1> Cadastro</h1>
-<b>Nome:</b>
-<br/>
-<input  [(ngModel)]= "usuario.nome"  id ="usuarioNome" type="text" pInputText placeholder="digite seu nome"/>
-<br/> 
-<br/> 
-<b>Siape:</b>
-<br/>
-<input  [(ngModel)]= "usuario.siape"  id ="usuarioSiape" type="text" pInputText placeholder="7 dígitos"/> 
-<br/> 
-<br/> 
+<div *ngIf="ehAdm">
+<app-menu-administrador></app-menu-administrador>
+</div>
+<div *ngIf="NaoEhAdm">
+    <app-menu-usuario></app-menu-usuario>
+ </div>
+
+
+<h1> Alterar Dados de {{usuario.nome}}</h1>
+<div *ngIf="ehAdm">
+    <b>Nome:</b>
+    <br/>
+    <input  [(ngModel)]= "usuario.nome"  id ="usuarioNome" type="text" pInputText placeholder="digite seu nome"/>
+    <br/> 
+    <br/> 
+    <b>Siape:</b>
+    <br/>
+    <input  [(ngModel)]= "usuario.siape"  id ="usuarioSiape" type="text" pInputText placeholder="7 dígitos"/> 
+    <br/> 
+    <br/> 
+</div>
+
 <b>Senha:</b>
 <br/> 
 <input  [(ngModel)]= "usuario.senha"  id ="usuarioSenha" type="password" pInputText placeholder="ex:4321"/>

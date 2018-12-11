@@ -151,6 +151,7 @@ export class UsuarioService {
         if(usuario.senha=="1" && usuario.siape==1){
             this.rotas.navigate(['/administrador/listarTodosUsuarios']);
             sessionStorage.setItem('ehCoordenador','false');
+            sessionStorage.setItem('ehAdm',"true");
             return;
            }
         else{
@@ -205,8 +206,8 @@ export class UsuarioService {
     this.rotas.navigate(['/usuario/cadastro']);
   }
 
-  irTelaAlterar(){
-    this.rotas.navigate(['/usuario/cadastro']);
+  irTelaAlterar(idUsuario){
+    this.rotas.navigate(['usuario/atualizar/'+idUsuario]);
   }
 
 
