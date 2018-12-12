@@ -42,15 +42,14 @@ import { ListarCoordenadorComponent } from './listar-coordenador/listar-coordena
 import { MenuCoordenadorComponent } from './menu-coordenador/menu-coordenador.component';
 import { MenuAdministradorComponent } from './menu-administrador/menu-administrador.component';
 import { MenuUsuarioComponent } from './menu-usuario/menu-usuario.component';
-import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/listagem-para-coordenador.component';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import {DropdownModule} from 'primeng/dropdown';
 import { ListarSetorComponent } from './listar-setor/listar-setor.component';
 import { AlterarSetorComponent } from './alterar-setor/alterar-setor.component';
 import { ParecerService } from './servicos/parecer.service';
-import { BuscarViagemComponent } from './buscar-viagem/buscar-viagem.component';
 import { ListarParecerComponent } from './listar-parecer/listar-parecer.component';
 import { AlterarParecerComponent } from './alterar-parecer/alterar-parecer.component';
+import { ListagemParaCoordenadorComponent } from './listar-usuarios-por-setor/listagem-para-coordenador.component';
 // import { VisitaComponent } from './listar/visita/visita.component';
 // import { ListarVisitaComponent } from './listar-visita/listar-visita.component';
 
@@ -107,7 +106,7 @@ export const rotas : Routes = [
     ListagemParaCoordenadorComponent,
     ListarSetorComponent,
     AlterarSetorComponent,
-    BuscarViagemComponent,
+
     ListarParecerComponent,
     AlterarParecerComponent,
     

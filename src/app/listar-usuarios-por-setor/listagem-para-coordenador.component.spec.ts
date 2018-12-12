@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador.component';
+
 
 describe('ListagemParaCoordenadorComponent', () => {
   let component: ListagemParaCoordenadorComponent;
