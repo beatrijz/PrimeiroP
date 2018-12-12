@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {MenuModule} from 'primeng/menu';
 import { RouterModule, Routes } from '@angular/router';
-
 import {FullCalendarModule} from 'primeng/fullcalendar';
 import {AngularFireModule } from '@angular/fire';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -26,7 +25,6 @@ import {BreadcrumbModule} from 'primeng/breadcrumb';
 import {TabMenuModule} from 'primeng/tabmenu';
 import { CadastrarCoordenadorComponent } from './cadastrar-coordenador/cadastrar-coordenador.component';
 import { CoordenadorService } from './servicos/coordenador.service';
-import { LoginAdministradorComponent } from './login-administrador/login-administrador.component';
 import { MenuAdmComponent } from './menu-adm/menu-adm.component';
 
 
@@ -47,7 +45,6 @@ import { MenuUsuarioComponent } from './menu-usuario/menu-usuario.component';
 import { ListagemParaCoordenadorComponent } from './listagem-para-coordenador/listagem-para-coordenador.component';
 //import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import {DropdownModule} from 'primeng/dropdown';
-
 import { ListarSetorComponent } from './listar-setor/listar-setor.component';
 import { AlterarSetorComponent } from './alterar-setor/alterar-setor.component';
 import { ParecerService } from './servicos/parecer.service';
@@ -102,7 +99,6 @@ export const rotas : Routes = [
     LoginComponent,
     CadastrarSetorComponent,
     CadastrarCoordenadorComponent,
-    LoginAdministradorComponent,
     MenuAdmComponent,
     ListarCoordenadorComponent,
     MenuCoordenadorComponent,
