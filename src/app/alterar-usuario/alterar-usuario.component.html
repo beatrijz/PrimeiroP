@@ -17,6 +17,9 @@
     <br/>
     <input  [(ngModel)]= "usuario.siape"  id ="usuarioSiape" type="text" pInputText placeholder="7 dígitos"/> 
     <br/> 
+    <b>Setor:</b>
+    <br/> 
+    <p-dropdown [options]="setores" [(ngModel)]="setorEscolhido" optionLabel="nome"></p-dropdown>
     <br/> 
 </div>
 

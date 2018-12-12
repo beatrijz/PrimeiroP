@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UsuarioService } from '../servicos/usuario.service';
+import { SetorService } from '../servicos/setor.service';
+import { Setor } from '../modelos/setor';
 
 @Component({
   selector: 'app-alterar-usuario',
@@ -12,15 +14,22 @@ export class AlterarUsuarioComponent implements OnInit {
   usuario;
   id=" ";
   ehAdm=false;
-  naoEhAdm=false;
+  naoEhAdm=true;
+  setorSelecionado;
+  setores:Setor[];
 
-  constructor(private usuarioService:UsuarioService, private rotas:Router, private route: ActivatedRoute) {
+  constructor(private usuarioService:UsuarioService, private rotas:Router, private route: ActivatedRoute,private setorService:SetorService) {
     this.usuario = {nome:'', senha:'', siape:null,idSetor:"",ehCoordenador:false}
+    this.setorService.listarTodos().subscribe(
+      listaSetor=>{
+        this.setores = listaSetor;
+      }
+    );
 
     if(sessionStorage.getItem("ehAdm")=='true'){
       this.ehAdm=true;
     }else{
-      this.naoEhAdm=true;
+      this.naoEhAdm=false;
     }
    }
 
@@ -35,6 +44,7 @@ export class AlterarUsuarioComponent implements OnInit {
   
 
 atualizarUsuario(){
+  this.setorSelecionado.nome=this.usuario.idSetor;
   this.usuarioService.atualizarTodos(this.id, this.usuario);
 }
 

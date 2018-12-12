@@ -32,7 +32,7 @@ export class UsuarioService {
 
   atualizarTodos(id, usuario){
     let usuarioDoc=this.angularFireStore.doc('usuario/'+id);
-    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome,ehCoordenador:usuario.ehCoordenador});
+    usuarioDoc.update({siape:usuario.siape, senha: usuario.senha, nome: usuario.nome,ehCoordenador:usuario.ehCoordenador,idSetor:usuario.idSetor});
     this.listarTodos();
     
   }

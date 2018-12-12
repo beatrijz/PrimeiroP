@@ -43,7 +43,8 @@ export class UsuarioComponent implements OnInit {
   }
 
   salvar(){
-     this.usuario.idSetor=this.setorEscolhido.id;
+    console.log(this.setorEscolhido.nome);
+     this.usuario.idSetor=this.setorEscolhido.nome;
     this.usuarioService.cadastrar(this.usuario);
 
 
