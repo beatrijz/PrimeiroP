@@ -15,7 +15,7 @@ export class AlterarUsuarioComponent implements OnInit {
   id=" ";
   ehAdm=false;
   naoEhAdm=true;
-  setorSelecionado;
+  setorSelecionado;;
   setores:Setor[];
 
   constructor(private usuarioService:UsuarioService, private rotas:Router, private route: ActivatedRoute,private setorService:SetorService) {
@@ -44,7 +44,9 @@ export class AlterarUsuarioComponent implements OnInit {
   
 
 atualizarUsuario(){
-  this.setorSelecionado.nome=this.usuario.idSetor;
+  console.log("nome do setor"+this.setorSelecionado.nome);
+  console.log("nome do setor"+this.setorSelecionado.id);
+  this.usuario.idSetor=this.setorSelecionado.nome;
   this.usuarioService.atualizarTodos(this.id, this.usuario);
 }
 
