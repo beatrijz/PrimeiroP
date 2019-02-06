@@ -23,8 +23,8 @@ export class ListagemParaCoordenadorComponent implements OnInit {
 
   constructor(private setorService:SetorService,private router: Router,private viagemService:ViagemService,
      private activedRoute:ActivatedRoute) {
-      console.log(sessionStorage.getItem('idSetor'));
-     this.viagemService.getUsuariosSetor(sessionStorage.getItem('idSetor')).subscribe(
+      console.log("id setor "+sessionStorage.getItem('idSetor'));
+     this.viagemService.getUsuariosSetor().subscribe(
       listaUsuariosSetor=>{
         this.usuariosSetor = listaUsuariosSetor;
       }
@@ -32,12 +32,12 @@ export class ListagemParaCoordenadorComponent implements OnInit {
    }
 
   ngOnInit() {
-    // this.activedRoute.params.subscribe(params =>{
-    //   this.idUsuario=params['id'];
-    //   console.log(this.idUsuario);
-    //   sessionStorage.setItem('idServidoor',this.idUsuario);
+     this.activedRoute.params.subscribe(params =>{
+       this.idUsuario=params['id'];
+       console.log(this.idUsuario);
+       sessionStorage.setItem('idServidoor',this.idUsuario);
     
-    // });
+    });
   }
 
 

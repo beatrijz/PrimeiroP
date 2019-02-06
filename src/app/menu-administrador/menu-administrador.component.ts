@@ -19,7 +19,7 @@ export class MenuAdministradorComponent implements OnInit {
           icon: 'pi pi-fw pi-cog',
           items: [
               {label: 'Cadastrar', icon: 'pi pi-fw pi-trash',routerLink: ['/usuario/cadastro']},
-              {label: 'listar', icon: 'pi pi-fw pi-refresh'},
+              {label: 'listar', icon: 'pi pi-fw pi-refresh',routerLink: ['/administrador/listarTodosUsuarios']},
           ]
       },
     {

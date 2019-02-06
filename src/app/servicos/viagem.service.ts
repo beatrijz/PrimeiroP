@@ -167,11 +167,10 @@ atualizarTodos(id, viagem){
 
 
 
-    getUsuariosSetor(idSetor) {
+    getUsuariosSetor() {
       return this.angularFireStore.collection<Usuario>("usuario", ref=>
-       ref.where ("idSetor",'==',idSetor))
+       ref.where ("idSetor",'==',sessionStorage.getItem('idSetor')))
        .valueChanges();
-   
      }
   
    

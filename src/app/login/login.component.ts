@@ -22,30 +22,28 @@ export class LoginComponent implements OnInit {
           this.setores = listaSetores;
         }
       );
-   }
+  }
 
-   fazerLogin(){
-     this.UsuarioService.fazerLogin(this.usuario);
-    
-    
-   }
+  fazerLogin(){
+    this.UsuarioService.fazerLogin(this.usuario);
+  }
 
-   irTelaCadastro(){
+  irTelaCadastro(){
     this.UsuarioService.irTelaCadastro();
-   }
+  }
 
-   addSingle() {
+  addSingle() {
     this.messageService.add({severity:'success', summary:'Service Message', detail:'Via MessageService'});
-   }
+  }
 
-addMultiple() {
+  addMultiple() {
     this.messageService.addAll([{severity:'success', summary:'Service Message', detail:'Via MessageService'},
-                                {severity:'info', summary:'Info Message', detail:'Via MessageService'}]);
-}
+      {severity:'info', summary:'Info Message', detail:'Via MessageService'}]);
+  }
 
-clear() {
-    this.messageService.clear();
-}
+  clear() {
+  this.messageService.clear();
+  }
 
 
   ngOnInit() {

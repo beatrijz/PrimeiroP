@@ -3,11 +3,10 @@
   <ng-template pTemplate="header">
       <tr>
 
-          <th> Id  </th>
+          
           <th> Nome </th>
           <th> Siape </th>
           <th> Setor </th>
-          <th> Senha </th>
           <th>Excluir este usuario</th>
           <th>Alterar este usuario</th>
          
@@ -16,11 +15,11 @@
   </ng-template>
   <ng-template pTemplate="body" let-usuario>
       <tr>
-          <td> <a [routerLink]="['/usuario/listar', usuario.id]">  {{usuario.id }} </a> </td>
+         
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.nome}} </a> </td>
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.siape}} </a> </td>
           <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.idSetor}} </a> </td>
-          <td> <a [routerLink]="['/usuario/listar', usuario.id]"> {{usuario.senha}} </a> </td>
+          
 
           <td>  <p-button  (click)="deletar(usuario)">Deletar</p-button>  </td>
           <td>  <p-button  (click)="AtualizarUsuario(usuario.id)">Atualizar</p-button>  </td>

@@ -41,6 +41,7 @@ export class SetorService {
           this.messageService.add({severity:'success', summary:'Success Message', detail:'Order submitted'});
           this.messageService.add({severity:'success', summary:'Message', detail:'setor cadastrado!'});
           console.log("cadastrado efetuado");
+          this.rotas.navigate(['/setor/listar/']);
           return;
           
         });

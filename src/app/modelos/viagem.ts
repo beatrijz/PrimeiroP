@@ -1,6 +1,6 @@
 import { Usuario } from "./usuario";
 
-export class viagem{
+export interface viagem{
     empresa:string ;
     cidade:string ;
     roteiro:String; 

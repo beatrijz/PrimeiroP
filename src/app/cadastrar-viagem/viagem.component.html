@@ -11,9 +11,10 @@
 <b>Data/Periodo</b> <br/>
 <p-calendar [(ngModel)]="viagem.data" dateFormat="dd.mm.yy"></p-calendar> <br/>  <br/> 
 <b>Horario saída</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.horarioSaida" pInputText placeholder="Saída"/><br/><br/>
+<p-calendar [(ngModel)]="viagem.horarioSaida" showTime="true" hourFormat="24"></p-calendar> <br>
 <b>Horario retorno</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.horarioRetorno" pInputText placeholder="Retorno"/><br/><br/>
+<p-calendar [(ngModel)]="viagem.horarioRetorno" showTime="true" hourFormat="24"></p-calendar>
+<br>
 <b>Professor(es) Responsável (is)</b> <br/>
 <input type="text" pInputText [(ngModel)]="viagem.professor" pInputText placeholder="Professor"/><br/><br/>
 <b>Componente(s) Curricular(es)</b>  <br/>
@@ -21,7 +22,7 @@
 <b>Conteúdo Programático</b> <br/>
 <input type="text" pInputText [(ngModel)]="viagem.conteudo"  pInputText placeholder="Conteudos da visita" /><br/><br/>
 <b>Carga Horaria</b> <br/>
-<input type="text" pInputText [(ngModel)]="viagem.cargaHoraria"  pInputText placeholder="Carga Horária"/><br/><br/>
+<p-calendar [(ngModel)]="value" showTime="true" hourFormat="24"></p-calendar><br>
 <b>Turma</b> <br/>
 <input type="text" pInputText [(ngModel)]="viagem.turma"  pInputText placeholder="Turma"/><br/><br/>
 <b>Quantitativo de alunos</b> <br/>

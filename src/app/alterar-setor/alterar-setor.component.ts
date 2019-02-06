@@ -15,7 +15,7 @@ export class AlterarSetorComponent implements OnInit {
 
   setor;
   id=" ";
-  usuarios:Usuario[]
+  usuarios;
   usuario:Usuario;
   coordenadorAdicionado;
 
@@ -25,6 +25,7 @@ export class AlterarSetorComponent implements OnInit {
       this.usuarioService.listarUsuariosPorSetor().subscribe(
       listaUsuarios=>{
         this.usuarios = listaUsuarios;
+        console.log(this.usuarios.length);
       }
     );
   }
@@ -34,7 +35,7 @@ export class AlterarSetorComponent implements OnInit {
     this.route.params.subscribe(params=> {this.id = params["id"];
     this.setorService.listarPorId(this.id).subscribe( atualizarSetor => {
       this.setor = atualizarSetor;
-    
+      
     }
     )});
   }
